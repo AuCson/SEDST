@@ -21,7 +21,7 @@ The project was developed upon PyTorch 0.3.0 and now tested on PyTorch 0.4.0 and
 
 ## Running Experiments
 
-For running experiments on semi-supervised cases, run:
+For running the model, run:
 ```
 python [semi_sup_model.py|unsup_model.py] -mode [train|adjust|test] -model [camrest|kvret|ubuntu|jd] -c spv_proportion=XXX OTHER_CONFIGS_IN_CONFIG_PY=VALUE
 ```
