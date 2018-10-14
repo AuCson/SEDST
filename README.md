@@ -51,7 +51,13 @@ For running embedding base metrics, please follow [here](https://github.com/juli
 ## Use Case
 - **Task oriented dialogue systems**, such as restaurant reservation systems, where tracking user's intention and knowledge-base interactions are necessary, but you don't have enough(while still have some) labeled data for this.
 
-- **Non-task oriented dialogue systems**, such as technique question answering conversations, where all the domain knowledge is embedded in the corpus and does not require knowledge base interaction. User's intention is completely not annotated, but the model can still extract context-aware "state spans" which helps response generation and visualization for humans.
+- **Non-task oriented dialogue systems**, such as technique question answering conversations, where all the domain knowledge is embedded in the corpus and does not require knowledge base interaction. User's intention is completely not annotated, but the model can still extract context-aware "state spans" which helps response generation and visualization for humans. For example:
+
+Turn |  User input | State span | Response |
+--- | --- | --- | ---
+0 | I just realised nothing can access my mysql database anymore , it says cannot connect , why would this be ? I did set it to be remote | remote would anymore mysql access | you can use the mysql client to connect to the server
+1 | is it running ? | running I says mysql access | yes, I am running it now
+
 
 
 ## For Reference
