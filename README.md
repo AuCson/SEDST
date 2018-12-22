@@ -16,8 +16,8 @@ The project was developed upon PyTorch 0.3.0 and now tested on PyTorch 0.4.0 and
 - [Stanford In-Car Personal Assistant Dataset](https://nlp.stanford.edu/blog/a-new-multi-turn-multi-domain-task-oriented-dialogue-dataset/)
 
 ### Non-task oriented datasets:
-- **Ubuntu Dialogue Corpus** A publically available preprocessed python pickled version, will be uploaded soon.
-- **JD.com Customer Service Corpus** Please make a request as [here](https://github.com/chenhongshen/HVMN)
+- **Ubuntu Dialogue Corpus** Python pickled version can be downloaded [here](http://www.iulianserban.com/Files/UbuntuDialogueCorpus.zip) or [julianser/Ubuntu-Multiresolution-Tools](https://github.com/julianser/Ubuntu-Multiresolution-Tools)
+- **JD.com Customer Service Corpus** Please make a request as description in [chenhongshen/HVMN](https://github.com/chenhongshen/HVMN)
 
 ## Running Experiments
 
