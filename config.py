@@ -43,6 +43,8 @@ class _Config:
         self.last_turn_only = False
         self.u_max_ts = 100
         self.freq_thres = 0
+        self.weight_decay = 0.
+        self.cancel_reg = False
 
     def init_handler(self, m):
         init_method = {

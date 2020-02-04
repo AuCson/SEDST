@@ -56,7 +56,7 @@ def get_sparse_input_efficient(x_input_np):
 
 def shift(pz_proba):
     first_input = np.zeros((pz_proba.size(1), pz_proba.size(2)))
-    first_input.fill(1e-10)
+    first_input.fill(1e-12)
     first_input = cuda_(Variable(torch.from_numpy(first_input)).float())
     pz_proba = list(pz_proba)[:-1]
     pz_proba.insert(0, first_input)
@@ -93,10 +93,6 @@ class DynamicEncoder(nn.Module):
         self.embedding = nn.Embedding(input_size, embed_size)
         self.gru = nn.GRU(embed_size, hidden_size, n_layers, dropout=self.dropout, bidirectional=True)
 
-        self.initial_hidden = nn.Parameter(torch.zeros(1, 1, hidden_size))
-        torch.nn.init.orthogonal(self.initial_hidden)
-        self.initial_hidden.requires_grad = False
-
     def forward(self, input_seqs, input_lens, hidden=None):
         """
         forward procedure. No need for inputs to be sorted
@@ -106,8 +102,6 @@ class DynamicEncoder(nn.Module):
         :return:
         """
         batch_size = input_seqs.size(1)
-        if hidden is None:
-            hidden = self.initial_hidden.repeat(self.n_layers * 2, batch_size, 1)
         embedded = self.embedding(input_seqs)
         embedded = embedded.transpose(0, 1)  # [B,T,E]
         sort_idx = np.argsort(-input_lens)
@@ -117,6 +111,7 @@ class DynamicEncoder(nn.Module):
         embedded = embedded[sort_idx].transpose(0, 1)  # [T,B,E]
         packed = torch.nn.utils.rnn.pack_padded_sequence(embedded, input_lens)
         outputs, hidden = self.gru(packed, hidden)
+
         outputs, _ = torch.nn.utils.rnn.pad_packed_sequence(outputs)
         outputs = outputs[:,:,:self.hidden_size] + outputs[:,:,self.hidden_size:]
         outputs = outputs.transpose(0, 1)[unsort_idx].transpose(0, 1).contiguous()
@@ -129,9 +124,7 @@ class Attn(nn.Module):
         super(Attn, self).__init__()
         self.hidden_size = hidden_size
         self.attn = nn.Linear(self.hidden_size * 2, hidden_size)
-        self.v = nn.Parameter(torch.zeros(hidden_size))
-        stdv = 1. / math.sqrt(self.v.size(0))
-        self.v.data.normal_(mean=0, std=stdv)
+        self.v = nn.Linear(self.hidden_size, 1)
 
     def forward(self, hidden, encoder_outputs, normalize=True):
         encoder_outputs = encoder_outputs.transpose(0, 1)  # [B,T,H]
@@ -144,9 +137,8 @@ class Attn(nn.Module):
         max_len = encoder_outputs.size(1)
         H = hidden.repeat(max_len, 1, 1).transpose(0, 1)
         energy = self.attn(torch.cat([H, encoder_outputs], 2))  # [B,T,2H]->[B,T,H]
-        energy = energy.transpose(2, 1)  # [B,H,T]
-        v = self.v.repeat(encoder_outputs.size(0), 1).unsqueeze(1)  # [B,1,H]
-        energy = torch.bmm(v, energy)  # [B,1,T]
+        # fix attention here
+        energy = self.v(F.tanh(energy)).transpose(1,2) # [B,1,T]
         return energy
 
 
@@ -159,13 +151,14 @@ class MultiTurnInferenceDecoder_Z(nn.Module):
         super().__init__()
         self.gru = nn.GRU(embed_size, hidden_size, dropout=dropout_rate)
         self.w1 = nn.Linear(hidden_size, vocab_size)
-        self.mu = nn.Linear(vocab_size, embed_size)
+        self.mu = nn.Linear(vocab_size, embed_size, bias=False)
         self.log_sigma = nn.Linear(vocab_size, embed_size)
         self.dropout_rate = dropout_rate
         self.vocab_size = vocab_size
         self.proj_copy1 = nn.Linear(hidden_size, hidden_size)
         self.proj_copy2 = nn.Linear(hidden_size, hidden_size)
         self.proj_copy3 = nn.Linear(hidden_size, hidden_size)
+        self.dropout = nn.Dropout(self.dropout_rate)
 
     def forward(self, u_input, u_enc_out, pv_pz_proba, pv_z_dec_out, m_input, m_enc_out, embed_z, last_hidden,
                 rand_eps, u_input_np, m_input_np):
@@ -186,7 +179,7 @@ class MultiTurnInferenceDecoder_Z(nn.Module):
         # if cfg.cuda: sparse_m_input = sparse_m_input.cuda()
         # if cfg.cuda: sparse_u_input = sparse_u_input.cuda()
 
-        embed_z = F.dropout(embed_z, self.dropout_rate)
+        embed_z = self.dropout(embed_z)
         gru_out, last_hidden = self.gru(embed_z, last_hidden)
         gen_score = self.w1(gru_out).squeeze(0) # [B,V]
         u_copy_score = F.tanh(self.proj_copy1(u_enc_out.transpose(0, 1)))  # [B,T,H]
@@ -238,11 +231,8 @@ class MultiTurnInferenceDecoder_Z(nn.Module):
             gen_score, u_copy_score, m_copy_score = tuple(
                 torch.split(scores, gen_score.size(1), dim=1))
             proba = gen_score + u_copy_score + m_copy_score
-        appr_emb = self.mu(proba)
-        log_sigma_ae = self.log_sigma(proba)
-        sigma_ae = torch.exp(log_sigma_ae)
-        sampled_ae = appr_emb + torch.mul(sigma_ae, rand_eps)
-        return sampled_ae, gru_out, last_hidden, proba, appr_emb, log_sigma_ae
+        appr_emb = self.mu(proba).unsqueeze(0)
+        return appr_emb, gru_out, last_hidden, proba, appr_emb, None
 
 
 class MultiTurnPriorDecoder_Z(nn.Module):
@@ -252,14 +242,15 @@ class MultiTurnPriorDecoder_Z(nn.Module):
         self.w1 = nn.Linear(hidden_size, vocab_size)
         self.proj_copy1 = nn.Linear(hidden_size, hidden_size)
         self.proj_copy2 = nn.Linear(hidden_size, hidden_size)
-        self.mu = nn.Linear(vocab_size, embed_size)
+        self.mu = nn.Linear(vocab_size, embed_size, bias=False)
         self.log_sigma = nn.Linear(vocab_size, embed_size)
         self.dropout_rate = dropout_rate
+        self.dropout = nn.Dropout(dropout_rate)
 
     def forward(self, u_input, u_enc_out, pv_pz_proba, pv_z_dec_out, embed_z, last_hidden, rand_eps, u_input_np,
                 m_input_np):
         sparse_u_input = Variable(get_sparse_input_efficient(u_input_np), requires_grad=False)
-        embed_z = F.dropout(embed_z, self.dropout_rate)
+        embed_z = self.dropout(embed_z)
         gru_out, last_hidden = self.gru(embed_z, last_hidden)
         gen_score = self.w1(gru_out).squeeze(0)
         u_copy_score = F.tanh(self.proj_copy1(u_enc_out.transpose(0, 1)))  # [B,T,H]
@@ -299,11 +290,8 @@ class MultiTurnPriorDecoder_Z(nn.Module):
             scores = F.softmax(torch.cat([gen_score, u_copy_score], dim=1), dim=1)
             gen_score, u_copy_score = tuple(torch.split(scores, gen_score.size(1), dim=1))
             proba = gen_score + u_copy_score  # [B,V]
-        appr_emb = self.mu(proba)
-        log_sigma_ae = self.log_sigma(proba)
-        sigma_ae = torch.exp(log_sigma_ae)
-        sampled_ae = appr_emb + torch.mul(sigma_ae, rand_eps)
-        return sampled_ae, gru_out, last_hidden, proba, appr_emb, log_sigma_ae
+        appr_emb = self.mu(proba).unsqueeze(0)
+        return appr_emb, gru_out, last_hidden, proba, appr_emb, None
 
 
 class ResponseDecoder(nn.Module):
@@ -317,9 +305,7 @@ class ResponseDecoder(nn.Module):
         self.emb = nn.Embedding(vocab_size, embed_size)
         self.attn_z = Attn(hidden_size)
         self.attn_u = Attn(hidden_size)
-        self.w4 = nn.Linear(hidden_size, hidden_size)
         self.gate_z = nn.Linear(hidden_size, hidden_size)
-        self.w5 = nn.Linear(hidden_size, hidden_size)
         self.gru = nn.GRU(embed_size + hidden_size + degree_size, hidden_size, dropout=dropout_rate)
         self.proj = nn.Linear(hidden_size * 3, vocab_size)
         self.proj_copy1 = nn.Linear(hidden_size, hidden_size)
@@ -341,7 +327,7 @@ class ResponseDecoder(nn.Module):
 
         z_context = self.attn_z(last_hidden, z_enc_out)
         u_context = self.attn_u(last_hidden, u_enc_out)
-        d_control = self.w4(z_context) + torch.mul(F.sigmoid(self.gate_z(z_context)), self.w5(u_context))
+        d_control = z_context + torch.mul(F.sigmoid(self.gate_z(z_context)),u_context)
         gru_out, last_hidden = self.gru(torch.cat([d_control, m_embed, degree_input.unsqueeze(0)], dim=2), last_hidden)
         gen_score = self.proj(torch.cat([z_context, u_context, gru_out], 2)).squeeze(0)
         z_copy_score = F.tanh(self.proj_copy1(z_enc_out.transpose(0, 1)))  # [B,T,H]
@@ -361,22 +347,28 @@ class ResponseDecoder(nn.Module):
 
 
 class MultinomialKLDivergenceLoss(nn.Module):
-    def __init__(self):
+    def __init__(self, special_tokens=[]):
         super().__init__()
+        self.special_tokens = special_tokens
 
     def forward(self, p_proba, q_proba): # [B, T, V]
         mask = torch.zeros(p_proba.size(0), p_proba.size(1))
-        for i in range(p_proba.size(0)):
-            for j in range(q_proba.size(0)):
-                topv, topi = torch.max(p_proba[i,j], -1)
-                if topi.item() == 0:
+        cnt = 0
+        for i in range(q_proba.size(0)):
+            flg = False
+            for j in range(q_proba.size(1)):
+                topv, topi = torch.max(q_proba[i,j], -1)
+                if flg:
                     mask[i,j] = 0
                 else:
                     mask[i,j] = 1
+                    cnt += 1
+                if topi.item() in self.special_tokens:
+                    flg = True
         mask = cuda_(Variable(mask))
         loss = q_proba * (torch.log(q_proba) - torch.log(p_proba))
         masked_loss = torch.sum(mask.unsqueeze(-1) * loss)
-        return masked_loss / (p_proba.size(1) * p_proba.size(0))
+        return masked_loss / (cnt + 1e-10)
 
 
 class SemiSupervisedSEDST(nn.Module):
@@ -385,16 +377,18 @@ class SemiSupervisedSEDST(nn.Module):
         super().__init__()
         self.u_encoder = DynamicEncoder(vocab_size, embed_size, hidden_size, layer_num, dropout_rate)
         self.m_encoder = DynamicEncoder(vocab_size, embed_size, hidden_size, layer_num, dropout_rate)
+        self.m_decoder = ResponseDecoder(embed_size, hidden_size, vocab_size, degree_size, dropout_rate)
         self.qz_decoder = MultiTurnInferenceDecoder_Z(embed_size, hidden_size, vocab_size, dropout_rate)  # posterior
         self.pz_decoder = MultiTurnPriorDecoder_Z(embed_size, hidden_size, vocab_size, dropout_rate)  # prior
-        self.m_decoder = ResponseDecoder(embed_size, hidden_size, vocab_size, degree_size, dropout_rate)
+
         self.embed_size = embed_size
         self.vocab = kwargs['vocab']
 
         self.pr_loss = nn.NLLLoss(ignore_index=0)
         self.q_loss = nn.NLLLoss(ignore_index=0)
         self.dec_loss = nn.NLLLoss(ignore_index=0)
-        self.kl_loss = MultinomialKLDivergenceLoss()
+        self.kl_loss = MultinomialKLDivergenceLoss(special_tokens=[self.vocab.encode(x) for x in ['EOS_Z1','EOS_Z2',
+                                                                                                  '</s>', '<pad>']])
 
         self.z_length = z_length
         self.alpha = alpha
@@ -476,9 +470,7 @@ class SemiSupervisedSEDST(nn.Module):
             pz_log_sigma.append(log_sigma_ae)
             pz_dec_outs.append(pz_dec_out)
         pz_dec_outs = torch.cat(pz_dec_outs, dim=0)  # [Tz,B,H]
-        pz_proba, pz_mu, pz_log_sigma = torch.stack(pz_proba, dim=0), torch.stack(pz_mu, dim=0), torch.stack(
-            pz_log_sigma,
-            dim=0)
+        pz_proba, pz_mu = torch.stack(pz_proba, dim=0), torch.stack(pz_mu, dim=0)
         # P(m|z,u)
         m_tm1 = cuda_(Variable(torch.ones(1, batch_size).long()))  # GO token
         pm_dec_proba, m_dec_outs = [],[]
@@ -515,15 +507,13 @@ class SemiSupervisedSEDST(nn.Module):
                 if cfg.cuda: rand_eps = rand_eps.cuda()
                 qz_ae, gru_out, last_hidden, proba, appr_emb, log_sigma_ae = \
                     self.qz_decoder(u_input=u_input, u_enc_out=u_enc_out, pv_pz_proba=pv_pz_proba,
-                                    pv_z_dec_out=pv_z_outs,
-                                    m_input=p_input, m_enc_out=p_enc_out, u_input_np=u_input_np, m_input_np=p_input_np,
-                                    embed_z=qz_ae, last_hidden=last_hidden, rand_eps=rand_eps)
+                                 pv_z_dec_out=pv_z_outs,
+                                 m_input=p_input, m_enc_out=p_enc_out, u_input_np=u_input_np, m_input_np=m_input_np,
+                                 embed_z=qz_ae, last_hidden=last_hidden, rand_eps=rand_eps)
                 qz_proba.append(proba)
                 qz_mu.append(appr_emb)
                 qz_log_sigma.append(log_sigma_ae)
-            qz_proba, qz_mu, qz_log_sigma = torch.stack(qz_proba, dim=0), torch.stack(qz_mu, dim=0), torch.stack(
-                qz_log_sigma,
-                dim=0)
+            qz_proba, qz_mu = torch.stack(qz_proba, dim=0), torch.stack(qz_mu, dim=0)
             if is_train:
                 return pz_proba, qz_proba, pm_dec_proba, pz_mu, pz_log_sigma, qz_mu, qz_log_sigma, turn_states
             else:
@@ -744,7 +734,7 @@ class SemiSupervisedSEDST(nn.Module):
 
     def unsupervised_loss(self, mu_q, log_sigma_q, mu_p, log_sigma_p, pm_dec_proba, m_input, pz_proba, qz_proba):
         m_loss = self.dec_loss(pm_dec_proba.view(-1, pm_dec_proba.size(2)), m_input.view(-1))
-        kl_div_loss = self.kl_loss(pz_proba, qz_proba)
+        kl_div_loss = self.kl_loss(pz_proba, qz_proba.detach())
         loss = m_loss + self.alpha * kl_div_loss
         return loss, m_loss, self.alpha * kl_div_loss
 
