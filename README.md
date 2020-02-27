@@ -84,12 +84,3 @@ Please consider citing:
 
 ## Misc
 - Some portion of the code is developed upon [Sequicity](https://github.com/WING-NUS/sequicity).
-
-- (Outdated) Usually, you can get better results by fine-tuning the model with ``adjust`` option with a small learning rate after regular training ends. Since the size of two task-oriented datasets are relatively small, the final performance may fluctuate, depending on random seeds and hyperparameters. We reported the average of them. If you run two experiments with this code and default parameters with default fixed "0" random seed you will get the results below, where three of them are higher than the reported result in the paper.
-
- Metric/Dataset |Cambridge Restaurant 50% | In-Car Assistant 50% |
- -- | -- | --
- J.G. Acc | 95.14% | 81.89%
- Match |  93.58%  | 81.20%
-
-- TODO: add shell scripts
