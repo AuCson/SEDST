@@ -1,0 +1,1288 @@
+DEBUG:root:force_stable : True
+cuda_device : 0
+aux_device : 1
+base_epoch : 0
+eos_m_token : EOS_M
+base_iter : 0
+beam_len_bonus : 0.5
+max_turn : 10
+trunc_turn : 999
+weight_decay : 0.0
+cancel_reg : True
+mode : unknown
+m : SEDST
+prev_z_method : none
+last_turn_only : False
+u_max_ts : 100
+pr_loss_weight : 1.0
+q_loss_weight : 1.0
+m_loss_weight : 1.0
+q_hidden_size : 50
+vocab_size : 832
+embedding_size : 50
+hidden_size : 50
+split : (3, 1, 1)
+lr : 0.003
+lr_decay : 0.5
+vocab_path : ./vocab/vocab09_slot_space.pkl
+data : ./data/CamRest676/CamRest676.json
+entity : ./data/CamRest676/CamRestOTGY.json
+db : ./data/CamRest676/CamRestDB.json
+glove_path : ./data/glove/glove.6B.50d.txt
+batch_size : 32
+degree_size : 5
+z_length : 8
+layer_num : 1
+dropout_rate : 0.0
+epoch_num : 100
+cuda : False
+spv_proportion : 25
+alpha : 0.1
+max_ts : 40
+early_stop_count : 5
+new_vocab : True
+model_path : models/camrest-25-seed0-nounsup.pkl
+result_path : results/camrest-25-seed0-nounsup.csv
+teacher_force : 100
+beam_search : False
+beam_size : 10
+sampling : False
+unfrz_attn_epoch : 0
+skip_unsup : True
+truncated : False
+pretrain : False
+
+INFO:root:757 known embedding. old mean: -0.008975 new mean 0.046814, old std 1.001501 new std 0.690264
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:19.269995 pr_loss:6.235024 m_loss:6.732586 q_loss:6.302384 grad:2.159022
+DEBUG:root:supervised loss:18.737555 pr_loss:6.015130 m_loss:6.574500 q_loss:6.147925 grad:2.312040
+DEBUG:root:supervised loss:18.534285 pr_loss:5.910997 m_loss:6.407896 q_loss:6.215391 grad:2.088743
+DEBUG:root:supervised loss:19.735432 pr_loss:6.780579 m_loss:6.363645 q_loss:6.591207 grad:3.283510
+DEBUG:root:supervised loss:15.653674 pr_loss:4.528909 m_loss:6.118762 q_loss:5.006003 grad:3.715261
+DEBUG:root:supervised loss:16.093470 pr_loss:5.252633 m_loss:5.635345 q_loss:5.205492 grad:2.811532
+DEBUG:root:supervised loss:15.692341 pr_loss:4.897230 m_loss:5.514768 q_loss:5.280342 grad:3.580948
+DEBUG:root:supervised loss:18.218616 pr_loss:6.060511 m_loss:5.655820 q_loss:6.502285 grad:4.702577
+DEBUG:root:supervised loss:12.697264 pr_loss:3.546257 m_loss:5.315031 q_loss:3.835976 grad:4.255278
+DEBUG:root:supervised loss:12.443284 pr_loss:3.693166 m_loss:4.880263 q_loss:3.869855 grad:4.197563
+DEBUG:root:supervised loss:12.151158 pr_loss:3.534321 m_loss:4.695385 q_loss:3.921452 grad:3.961067
+DEBUG:root:supervised loss:13.028105 pr_loss:3.745310 m_loss:4.757253 q_loss:4.525541 grad:6.604649
+INFO:root:avg training loss in epoch 0 sup:16.021265 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:12.638796 pr_loss:4.663780 m_loss:4.591916 q_loss:3.383101
+DEBUG:root:supervised loss:11.767202 pr_loss:3.935917 m_loss:4.414399 q_loss:3.416886
+DEBUG:root:supervised loss:11.678752 pr_loss:3.676530 m_loss:4.525275 q_loss:3.476947
+DEBUG:root:supervised loss:12.038447 pr_loss:4.199056 m_loss:4.705455 q_loss:3.133936
+DEBUG:root:supervised loss:11.155081 pr_loss:3.648660 m_loss:4.482157 q_loss:3.024263
+DEBUG:root:supervised loss:10.601919 pr_loss:3.307102 m_loss:4.314879 q_loss:2.979937
+DEBUG:root:supervised loss:11.106451 pr_loss:3.255845 m_loss:4.704683 q_loss:3.145923
+DEBUG:root:supervised loss:12.036229 pr_loss:4.027374 m_loss:4.878453 q_loss:3.130402
+DEBUG:root:supervised loss:11.669891 pr_loss:3.776578 m_loss:4.739301 q_loss:3.154012
+DEBUG:root:supervised loss:11.016145 pr_loss:3.429511 m_loss:4.509390 q_loss:3.077244
+DEBUG:root:supervised loss:10.755593 pr_loss:3.366288 m_loss:4.317524 q_loss:3.071780
+DEBUG:root:supervised loss:11.306454 pr_loss:3.304633 m_loss:4.739625 q_loss:3.262195
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 0 sup:11.480913 unsup:0.000000
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:11.287067 pr_loss:3.658134 m_loss:4.718659 q_loss:2.910275 grad:8.839558
+DEBUG:root:supervised loss:11.403129 pr_loss:3.694366 m_loss:4.496985 q_loss:3.211778 grad:5.821245
+DEBUG:root:supervised loss:11.126022 pr_loss:3.713601 m_loss:4.256069 q_loss:3.156353 grad:5.606016
+DEBUG:root:supervised loss:11.140831 pr_loss:3.646960 m_loss:4.327493 q_loss:3.166378 grad:6.019505
+DEBUG:root:supervised loss:10.987068 pr_loss:3.220013 m_loss:4.808817 q_loss:2.958238 grad:7.367061
+DEBUG:root:supervised loss:10.655685 pr_loss:3.392587 m_loss:4.394909 q_loss:2.868189 grad:7.448123
+DEBUG:root:supervised loss:9.925385 pr_loss:3.291065 m_loss:4.060942 q_loss:2.573380 grad:6.302404
+DEBUG:root:supervised loss:10.031860 pr_loss:3.318471 m_loss:4.125515 q_loss:2.587874 grad:6.019943
+DEBUG:root:supervised loss:10.445896 pr_loss:2.862416 m_loss:5.033644 q_loss:2.549836 grad:5.249550
+DEBUG:root:supervised loss:9.731041 pr_loss:2.651286 m_loss:4.521022 q_loss:2.558733 grad:4.604336
+DEBUG:root:supervised loss:9.066493 pr_loss:2.620377 m_loss:4.063389 q_loss:2.382727 grad:4.699115
+DEBUG:root:supervised loss:9.781960 pr_loss:2.995739 m_loss:3.851807 q_loss:2.934413 grad:8.146990
+INFO:root:avg training loss in epoch 1 sup:10.465203 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:9.555020 pr_loss:2.769708 m_loss:4.738354 q_loss:2.046959
+DEBUG:root:supervised loss:8.540894 pr_loss:2.313308 m_loss:4.453454 q_loss:1.774132
+DEBUG:root:supervised loss:8.055980 pr_loss:2.179898 m_loss:4.095290 q_loss:1.780792
+DEBUG:root:supervised loss:8.918381 pr_loss:2.446958 m_loss:4.263488 q_loss:2.207934
+DEBUG:root:supervised loss:9.876123 pr_loss:2.785880 m_loss:4.938587 q_loss:2.151656
+DEBUG:root:supervised loss:8.958558 pr_loss:2.355847 m_loss:4.753054 q_loss:1.849657
+DEBUG:root:supervised loss:8.535406 pr_loss:2.219480 m_loss:4.486048 q_loss:1.829879
+DEBUG:root:supervised loss:8.585564 pr_loss:2.484722 m_loss:4.050879 q_loss:2.049962
+DEBUG:root:supervised loss:9.173453 pr_loss:2.552665 m_loss:4.246787 q_loss:2.374001
+DEBUG:root:supervised loss:10.210611 pr_loss:3.308494 m_loss:4.612098 q_loss:2.290020
+DEBUG:root:supervised loss:9.194537 pr_loss:2.791772 m_loss:4.241217 q_loss:2.161549
+DEBUG:root:supervised loss:8.886125 pr_loss:2.631938 m_loss:4.041746 q_loss:2.212440
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 1 sup:9.040888 unsup:0.000000
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:9.375719 pr_loss:2.609403 m_loss:4.687321 q_loss:2.078995 grad:7.659642
+DEBUG:root:supervised loss:8.294845 pr_loss:2.387758 m_loss:4.240981 q_loss:1.666106 grad:6.415909
+DEBUG:root:supervised loss:7.464176 pr_loss:2.059477 m_loss:3.908122 q_loss:1.496577 grad:3.602094
+DEBUG:root:supervised loss:7.508965 pr_loss:1.972663 m_loss:3.964360 q_loss:1.571942 grad:3.183005
+DEBUG:root:supervised loss:8.105248 pr_loss:1.790844 m_loss:4.830037 q_loss:1.484368 grad:3.755464
+DEBUG:root:supervised loss:7.496285 pr_loss:1.619941 m_loss:4.340527 q_loss:1.535818 grad:4.922156
+DEBUG:root:supervised loss:7.101430 pr_loss:1.546214 m_loss:3.942421 q_loss:1.612795 grad:5.158848
+DEBUG:root:supervised loss:7.042403 pr_loss:1.659963 m_loss:3.655020 q_loss:1.727420 grad:4.057625
+DEBUG:root:supervised loss:6.786125 pr_loss:1.277459 m_loss:4.635155 q_loss:0.873511 grad:2.944938
+DEBUG:root:supervised loss:6.694390 pr_loss:1.305762 m_loss:4.319998 q_loss:1.068630 grad:3.243365
+DEBUG:root:supervised loss:6.245985 pr_loss:1.243555 m_loss:3.946875 q_loss:1.055555 grad:2.741677
+DEBUG:root:supervised loss:6.274602 pr_loss:1.376398 m_loss:3.672813 q_loss:1.225392 grad:4.548328
+INFO:root:avg training loss in epoch 2 sup:7.365848 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:6.840431 pr_loss:1.336994 m_loss:4.578538 q_loss:0.924899
+DEBUG:root:supervised loss:6.491684 pr_loss:1.240699 m_loss:4.279580 q_loss:0.971406
+DEBUG:root:supervised loss:6.049436 pr_loss:1.027256 m_loss:4.004436 q_loss:1.017743
+DEBUG:root:supervised loss:6.592987 pr_loss:1.389873 m_loss:3.944487 q_loss:1.258626
+DEBUG:root:supervised loss:7.061312 pr_loss:1.471961 m_loss:4.437387 q_loss:1.151965
+DEBUG:root:supervised loss:6.679421 pr_loss:1.289517 m_loss:4.130733 q_loss:1.259173
+DEBUG:root:supervised loss:6.503367 pr_loss:1.419251 m_loss:3.761632 q_loss:1.322484
+DEBUG:root:supervised loss:7.243097 pr_loss:1.390660 m_loss:4.813578 q_loss:1.038859
+DEBUG:root:supervised loss:6.994044 pr_loss:1.359077 m_loss:4.618659 q_loss:1.016308
+DEBUG:root:supervised loss:6.555429 pr_loss:1.204938 m_loss:4.332062 q_loss:1.018430
+DEBUG:root:supervised loss:6.307244 pr_loss:1.232339 m_loss:3.939769 q_loss:1.135136
+DEBUG:root:supervised loss:6.656703 pr_loss:1.500614 m_loss:3.882343 q_loss:1.273746
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 2 sup:6.664596 unsup:0.000000
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:6.233504 pr_loss:0.994721 m_loss:4.513233 q_loss:0.725551 grad:3.770200
+DEBUG:root:supervised loss:6.287298 pr_loss:1.132527 m_loss:4.229116 q_loss:0.925655 grad:3.071438
+DEBUG:root:supervised loss:5.877755 pr_loss:1.064645 m_loss:3.897467 q_loss:0.915643 grad:2.699059
+DEBUG:root:supervised loss:5.676623 pr_loss:1.178444 m_loss:3.522584 q_loss:0.975595 grad:3.706426
+DEBUG:root:supervised loss:6.335173 pr_loss:0.910465 m_loss:4.471872 q_loss:0.952835 grad:3.321166
+DEBUG:root:supervised loss:5.706489 pr_loss:0.813680 m_loss:4.049857 q_loss:0.842952 grad:2.482389
+DEBUG:root:supervised loss:5.520463 pr_loss:0.901890 m_loss:3.734818 q_loss:0.883755 grad:2.633514
+DEBUG:root:supervised loss:5.472985 pr_loss:1.015875 m_loss:3.528958 q_loss:0.928153 grad:3.085861
+DEBUG:root:supervised loss:6.260970 pr_loss:0.901899 m_loss:4.564215 q_loss:0.794855 grad:2.979484
+DEBUG:root:supervised loss:6.309476 pr_loss:1.259932 m_loss:4.061395 q_loss:0.988150 grad:4.430833
+DEBUG:root:supervised loss:5.810086 pr_loss:1.153926 m_loss:3.728121 q_loss:0.928039 grad:4.230512
+DEBUG:root:supervised loss:5.718351 pr_loss:1.363439 m_loss:3.226670 q_loss:1.128242 grad:3.430234
+INFO:root:avg training loss in epoch 3 sup:5.934098 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:6.181807 pr_loss:0.815347 m_loss:4.596415 q_loss:0.770045
+DEBUG:root:supervised loss:6.130611 pr_loss:0.922988 m_loss:4.416146 q_loss:0.791477
+DEBUG:root:supervised loss:5.861273 pr_loss:0.938146 m_loss:4.115439 q_loss:0.807688
+DEBUG:root:supervised loss:5.652100 pr_loss:1.003335 m_loss:3.780858 q_loss:0.867907
+DEBUG:root:supervised loss:5.601292 pr_loss:1.098833 m_loss:3.654431 q_loss:0.848028
+DEBUG:root:supervised loss:5.833117 pr_loss:0.808196 m_loss:4.213496 q_loss:0.811425
+DEBUG:root:supervised loss:6.018579 pr_loss:1.072195 m_loss:3.936985 q_loss:1.009399
+DEBUG:root:supervised loss:5.637836 pr_loss:1.104222 m_loss:3.523623 q_loss:1.009990
+DEBUG:root:supervised loss:5.714200 pr_loss:0.709907 m_loss:4.361389 q_loss:0.642903
+DEBUG:root:supervised loss:5.908463 pr_loss:0.965051 m_loss:4.078557 q_loss:0.864855
+DEBUG:root:supervised loss:5.484366 pr_loss:0.897211 m_loss:3.829076 q_loss:0.758080
+DEBUG:root:supervised loss:5.625792 pr_loss:1.063346 m_loss:3.707984 q_loss:0.854462
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 3 sup:5.804120 unsup:0.000000
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:5.737544 pr_loss:0.697322 m_loss:4.436136 q_loss:0.604086 grad:2.069200
+DEBUG:root:supervised loss:5.641525 pr_loss:0.901714 m_loss:3.948807 q_loss:0.791004 grad:3.265400
+DEBUG:root:supervised loss:5.256417 pr_loss:0.904337 m_loss:3.615712 q_loss:0.736368 grad:2.649226
+DEBUG:root:supervised loss:5.288340 pr_loss:1.181670 m_loss:3.140954 q_loss:0.965716 grad:3.288407
+DEBUG:root:supervised loss:5.431379 pr_loss:0.747811 m_loss:4.159979 q_loss:0.523589 grad:4.433946
+DEBUG:root:supervised loss:5.736078 pr_loss:0.999650 m_loss:3.894674 q_loss:0.841753 grad:3.459058
+DEBUG:root:supervised loss:5.257721 pr_loss:0.892801 m_loss:3.570948 q_loss:0.793971 grad:2.840717
+DEBUG:root:supervised loss:4.677369 pr_loss:0.789174 m_loss:3.158125 q_loss:0.730070 grad:2.579769
+DEBUG:root:supervised loss:4.999993 pr_loss:0.468893 m_loss:4.112060 q_loss:0.419040 grad:1.580126
+DEBUG:root:supervised loss:4.576286 pr_loss:0.466395 m_loss:3.709832 q_loss:0.400058 grad:1.822465
+DEBUG:root:supervised loss:4.467115 pr_loss:0.596532 m_loss:3.362286 q_loss:0.508297 grad:2.074793
+DEBUG:root:supervised loss:4.242146 pr_loss:0.632975 m_loss:3.140080 q_loss:0.469090 grad:3.079355
+INFO:root:avg training loss in epoch 4 sup:5.109326 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:5.802651 pr_loss:0.706187 m_loss:4.412917 q_loss:0.683547
+DEBUG:root:supervised loss:5.825695 pr_loss:0.840388 m_loss:4.206313 q_loss:0.778994
+DEBUG:root:supervised loss:5.740223 pr_loss:0.932013 m_loss:3.896833 q_loss:0.911377
+DEBUG:root:supervised loss:5.538351 pr_loss:0.978673 m_loss:3.543727 q_loss:1.015951
+DEBUG:root:supervised loss:5.142240 pr_loss:0.922327 m_loss:3.316235 q_loss:0.903678
+DEBUG:root:supervised loss:5.209819 pr_loss:0.535403 m_loss:4.140887 q_loss:0.533529
+DEBUG:root:supervised loss:5.719421 pr_loss:0.890739 m_loss:3.845969 q_loss:0.982713
+DEBUG:root:supervised loss:5.368427 pr_loss:0.893943 m_loss:3.589863 q_loss:0.884621
+DEBUG:root:supervised loss:5.273697 pr_loss:0.919545 m_loss:3.386379 q_loss:0.967773
+DEBUG:root:supervised loss:5.102567 pr_loss:0.586429 m_loss:4.000913 q_loss:0.515225
+DEBUG:root:supervised loss:5.666870 pr_loss:0.919668 m_loss:3.706970 q_loss:1.040232
+DEBUG:root:supervised loss:5.039572 pr_loss:0.911407 m_loss:3.192938 q_loss:0.935227
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 4 sup:5.452461 unsup:0.000000
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:5.060153 pr_loss:0.537691 m_loss:3.991393 q_loss:0.531070 grad:2.246918
+DEBUG:root:supervised loss:5.245851 pr_loss:0.789964 m_loss:3.726345 q_loss:0.729542 grad:1.926866
+DEBUG:root:supervised loss:4.756704 pr_loss:0.760755 m_loss:3.366512 q_loss:0.629437 grad:1.665506
+DEBUG:root:supervised loss:4.310988 pr_loss:0.750816 m_loss:2.881848 q_loss:0.678324 grad:2.372714
+DEBUG:root:supervised loss:5.037630 pr_loss:0.480929 m_loss:4.086812 q_loss:0.469888 grad:2.131795
+DEBUG:root:supervised loss:4.863243 pr_loss:0.645943 m_loss:3.590028 q_loss:0.627272 grad:2.205323
+DEBUG:root:supervised loss:4.601987 pr_loss:0.741889 m_loss:3.228283 q_loss:0.631815 grad:2.501984
+DEBUG:root:supervised loss:4.317747 pr_loss:0.879802 m_loss:2.657295 q_loss:0.780649 grad:3.011566
+DEBUG:root:supervised loss:4.651319 pr_loss:0.463428 m_loss:3.824445 q_loss:0.363446 grad:2.471169
+DEBUG:root:supervised loss:4.158357 pr_loss:0.378843 m_loss:3.411472 q_loss:0.368042 grad:2.094399
+DEBUG:root:supervised loss:3.988529 pr_loss:0.489747 m_loss:3.003292 q_loss:0.495490 grad:2.517019
+DEBUG:root:supervised loss:3.491878 pr_loss:0.379027 m_loss:2.765168 q_loss:0.347683 grad:2.292210
+INFO:root:avg training loss in epoch 5 sup:4.540365 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:5.368011 pr_loss:0.678172 m_loss:4.186407 q_loss:0.503432
+DEBUG:root:supervised loss:5.326801 pr_loss:0.796469 m_loss:3.985215 q_loss:0.545117
+DEBUG:root:supervised loss:5.046917 pr_loss:0.748731 m_loss:3.659200 q_loss:0.638986
+DEBUG:root:supervised loss:4.874506 pr_loss:0.839772 m_loss:3.271163 q_loss:0.763571
+DEBUG:root:supervised loss:4.325729 pr_loss:0.692288 m_loss:3.070997 q_loss:0.562445
+DEBUG:root:supervised loss:4.700711 pr_loss:0.511132 m_loss:3.761984 q_loss:0.427595
+DEBUG:root:supervised loss:5.072418 pr_loss:0.858838 m_loss:3.443192 q_loss:0.770388
+DEBUG:root:supervised loss:4.375774 pr_loss:0.779916 m_loss:2.875068 q_loss:0.720790
+DEBUG:root:supervised loss:4.778007 pr_loss:0.484431 m_loss:3.888649 q_loss:0.404927
+DEBUG:root:supervised loss:5.070629 pr_loss:0.756214 m_loss:3.598238 q_loss:0.716177
+DEBUG:root:supervised loss:4.684229 pr_loss:0.664689 m_loss:3.300413 q_loss:0.719127
+DEBUG:root:supervised loss:4.434421 pr_loss:0.661501 m_loss:3.094233 q_loss:0.678687
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 5 sup:4.838179 unsup:0.000000
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:4.486187 pr_loss:0.428879 m_loss:3.721165 q_loss:0.336143 grad:1.845686
+DEBUG:root:supervised loss:4.824096 pr_loss:0.691740 m_loss:3.457097 q_loss:0.675260 grad:1.766161
+DEBUG:root:supervised loss:4.247517 pr_loss:0.618288 m_loss:3.040317 q_loss:0.588912 grad:1.780145
+DEBUG:root:supervised loss:3.680521 pr_loss:0.597898 m_loss:2.486223 q_loss:0.596400 grad:1.888651
+DEBUG:root:supervised loss:4.689435 pr_loss:0.405689 m_loss:3.813359 q_loss:0.470386 grad:2.358086
+DEBUG:root:supervised loss:4.386117 pr_loss:0.525203 m_loss:3.292986 q_loss:0.567928 grad:3.021041
+DEBUG:root:supervised loss:4.142638 pr_loss:0.589186 m_loss:2.977103 q_loss:0.576349 grad:3.037053
+DEBUG:root:supervised loss:3.848228 pr_loss:0.841314 m_loss:2.290583 q_loss:0.716330 grad:3.877208
+DEBUG:root:supervised loss:3.939544 pr_loss:0.252209 m_loss:3.472063 q_loss:0.215272 grad:1.030738
+DEBUG:root:supervised loss:3.662619 pr_loss:0.269642 m_loss:3.122156 q_loss:0.270822 grad:1.703257
+DEBUG:root:supervised loss:3.532760 pr_loss:0.412045 m_loss:2.720274 q_loss:0.400442 grad:2.029767
+DEBUG:root:supervised loss:3.005946 pr_loss:0.326225 m_loss:2.431134 q_loss:0.248587 grad:2.204320
+INFO:root:avg training loss in epoch 6 sup:4.037134 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:4.610170 pr_loss:0.451287 m_loss:3.584806 q_loss:0.574077
+DEBUG:root:supervised loss:4.946867 pr_loss:0.789391 m_loss:3.333710 q_loss:0.823766
+DEBUG:root:supervised loss:4.621531 pr_loss:0.765317 m_loss:3.021625 q_loss:0.834590
+DEBUG:root:supervised loss:4.338998 pr_loss:0.701838 m_loss:2.822647 q_loss:0.814513
+DEBUG:root:supervised loss:5.116076 pr_loss:0.541294 m_loss:3.910872 q_loss:0.663910
+DEBUG:root:supervised loss:5.130459 pr_loss:0.724448 m_loss:3.711027 q_loss:0.694985
+DEBUG:root:supervised loss:5.006328 pr_loss:0.760862 m_loss:3.393176 q_loss:0.852290
+DEBUG:root:supervised loss:4.996665 pr_loss:0.961307 m_loss:3.011231 q_loss:1.024126
+DEBUG:root:supervised loss:4.221051 pr_loss:0.698751 m_loss:2.803065 q_loss:0.719234
+DEBUG:root:supervised loss:4.813964 pr_loss:0.603694 m_loss:3.481507 q_loss:0.728763
+DEBUG:root:supervised loss:4.937342 pr_loss:0.830317 m_loss:3.156311 q_loss:0.950714
+DEBUG:root:supervised loss:4.251536 pr_loss:0.795187 m_loss:2.581020 q_loss:0.875329
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 6 sup:4.749249 unsup:0.000000
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:4.146689 pr_loss:0.326940 m_loss:3.402965 q_loss:0.416784 grad:2.018522
+DEBUG:root:supervised loss:4.560946 pr_loss:0.698860 m_loss:3.177808 q_loss:0.684279 grad:2.169890
+DEBUG:root:supervised loss:3.951945 pr_loss:0.600681 m_loss:2.717385 q_loss:0.633879 grad:1.941867
+DEBUG:root:supervised loss:3.339805 pr_loss:0.538505 m_loss:2.196765 q_loss:0.604535 grad:1.682830
+DEBUG:root:supervised loss:3.778326 pr_loss:0.230329 m_loss:3.251755 q_loss:0.296243 grad:1.810033
+DEBUG:root:supervised loss:3.393635 pr_loss:0.178998 m_loss:2.911152 q_loss:0.303484 grad:1.529834
+DEBUG:root:supervised loss:3.164017 pr_loss:0.264689 m_loss:2.478105 q_loss:0.421223 grad:1.881998
+DEBUG:root:supervised loss:2.758350 pr_loss:0.228674 m_loss:2.190681 q_loss:0.338994 grad:2.575386
+DEBUG:root:supervised loss:4.337413 pr_loss:0.324089 m_loss:3.481648 q_loss:0.531676 grad:1.664320
+DEBUG:root:supervised loss:3.903871 pr_loss:0.411540 m_loss:2.917098 q_loss:0.575234 grad:3.422857
+DEBUG:root:supervised loss:3.543629 pr_loss:0.461400 m_loss:2.553797 q_loss:0.528432 grad:2.994841
+DEBUG:root:supervised loss:3.343909 pr_loss:0.719784 m_loss:1.980814 q_loss:0.643311 grad:2.956001
+INFO:root:avg training loss in epoch 7 sup:3.685211 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:4.849384 pr_loss:0.501039 m_loss:3.666140 q_loss:0.682205
+DEBUG:root:supervised loss:4.625498 pr_loss:0.611666 m_loss:3.489777 q_loss:0.524055
+DEBUG:root:supervised loss:4.540231 pr_loss:0.743830 m_loss:3.150493 q_loss:0.645907
+DEBUG:root:supervised loss:4.409245 pr_loss:0.844059 m_loss:2.763734 q_loss:0.801452
+DEBUG:root:supervised loss:3.806374 pr_loss:0.675938 m_loss:2.574015 q_loss:0.556421
+DEBUG:root:supervised loss:4.056426 pr_loss:0.404394 m_loss:3.254728 q_loss:0.397303
+DEBUG:root:supervised loss:4.437908 pr_loss:0.788883 m_loss:2.879208 q_loss:0.769816
+DEBUG:root:supervised loss:3.718802 pr_loss:0.725248 m_loss:2.327853 q_loss:0.665700
+DEBUG:root:supervised loss:4.090336 pr_loss:0.356815 m_loss:3.331429 q_loss:0.402092
+DEBUG:root:supervised loss:4.602834 pr_loss:0.738657 m_loss:3.106360 q_loss:0.757816
+DEBUG:root:supervised loss:4.180850 pr_loss:0.713984 m_loss:2.717794 q_loss:0.749072
+DEBUG:root:supervised loss:3.994084 pr_loss:0.745001 m_loss:2.564239 q_loss:0.684845
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 7 sup:4.275998 unsup:0.000000
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:3.616497 pr_loss:0.216070 m_loss:3.023076 q_loss:0.377350 grad:1.480585
+DEBUG:root:supervised loss:3.133559 pr_loss:0.155463 m_loss:2.698404 q_loss:0.279693 grad:1.364667
+DEBUG:root:supervised loss:2.980623 pr_loss:0.260130 m_loss:2.266388 q_loss:0.454106 grad:1.537551
+DEBUG:root:supervised loss:2.430107 pr_loss:0.160127 m_loss:2.005705 q_loss:0.264275 grad:1.776690
+DEBUG:root:supervised loss:3.690871 pr_loss:0.269506 m_loss:3.074059 q_loss:0.347306 grad:1.297258
+DEBUG:root:supervised loss:4.331707 pr_loss:0.621565 m_loss:2.823625 q_loss:0.886516 grad:1.957168
+DEBUG:root:supervised loss:3.499925 pr_loss:0.509490 m_loss:2.352125 q_loss:0.638309 grad:1.845508
+DEBUG:root:supervised loss:2.869775 pr_loss:0.448973 m_loss:1.871071 q_loss:0.549730 grad:2.414874
+DEBUG:root:supervised loss:3.855235 pr_loss:0.279790 m_loss:3.150332 q_loss:0.425112 grad:1.025555
+DEBUG:root:supervised loss:3.164521 pr_loss:0.286743 m_loss:2.575222 q_loss:0.302556 grad:1.369638
+DEBUG:root:supervised loss:3.065005 pr_loss:0.336559 m_loss:2.318252 q_loss:0.410195 grad:1.651675
+DEBUG:root:supervised loss:2.827406 pr_loss:0.520148 m_loss:1.760211 q_loss:0.547047 grad:1.923844
+INFO:root:avg training loss in epoch 8 sup:3.288769 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:3.816909 pr_loss:0.437664 m_loss:2.993411 q_loss:0.385834
+DEBUG:root:supervised loss:4.052518 pr_loss:0.743421 m_loss:2.610373 q_loss:0.698724
+DEBUG:root:supervised loss:3.465543 pr_loss:0.712345 m_loss:2.110492 q_loss:0.642706
+DEBUG:root:supervised loss:3.733564 pr_loss:0.374298 m_loss:3.032399 q_loss:0.326867
+DEBUG:root:supervised loss:4.216047 pr_loss:0.696531 m_loss:2.837814 q_loss:0.681703
+DEBUG:root:supervised loss:3.917542 pr_loss:0.711879 m_loss:2.474553 q_loss:0.731110
+DEBUG:root:supervised loss:3.599785 pr_loss:0.650848 m_loss:2.379187 q_loss:0.569750
+DEBUG:root:supervised loss:4.242528 pr_loss:0.463104 m_loss:3.353596 q_loss:0.425828
+DEBUG:root:supervised loss:4.330266 pr_loss:0.614605 m_loss:3.237221 q_loss:0.478440
+DEBUG:root:supervised loss:4.147424 pr_loss:0.654503 m_loss:2.854770 q_loss:0.638150
+DEBUG:root:supervised loss:4.229585 pr_loss:0.865574 m_loss:2.552131 q_loss:0.811880
+DEBUG:root:supervised loss:3.485354 pr_loss:0.611584 m_loss:2.345397 q_loss:0.528373
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 8 sup:3.936422 unsup:0.000000
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:3.359453 pr_loss:0.269230 m_loss:2.823193 q_loss:0.267031 grad:1.053963
+DEBUG:root:supervised loss:3.955716 pr_loss:0.562228 m_loss:2.610337 q_loss:0.783150 grad:1.733558
+DEBUG:root:supervised loss:3.142397 pr_loss:0.442954 m_loss:2.149981 q_loss:0.549462 grad:1.596138
+DEBUG:root:supervised loss:2.616825 pr_loss:0.434331 m_loss:1.678177 q_loss:0.504316 grad:1.520613
+DEBUG:root:supervised loss:3.022236 pr_loss:0.158333 m_loss:2.671868 q_loss:0.192034 grad:0.952313
+DEBUG:root:supervised loss:2.714125 pr_loss:0.139062 m_loss:2.365516 q_loss:0.209547 grad:0.951522
+DEBUG:root:supervised loss:2.469649 pr_loss:0.228504 m_loss:1.944547 q_loss:0.296598 grad:0.980871
+DEBUG:root:supervised loss:2.106861 pr_loss:0.165308 m_loss:1.787030 q_loss:0.154522 grad:1.266329
+DEBUG:root:supervised loss:3.568693 pr_loss:0.284834 m_loss:2.855886 q_loss:0.427972 grad:1.054701
+DEBUG:root:supervised loss:2.831201 pr_loss:0.200164 m_loss:2.297544 q_loss:0.333493 grad:1.226633
+DEBUG:root:supervised loss:2.684531 pr_loss:0.280452 m_loss:2.078267 q_loss:0.325812 grad:1.276637
+DEBUG:root:supervised loss:2.553953 pr_loss:0.440074 m_loss:1.574701 q_loss:0.539178 grad:2.013879
+INFO:root:avg training loss in epoch 9 sup:2.918803 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:4.068923 pr_loss:0.444698 m_loss:3.182605 q_loss:0.441620
+DEBUG:root:supervised loss:4.095146 pr_loss:0.543462 m_loss:3.043375 q_loss:0.508308
+DEBUG:root:supervised loss:3.990031 pr_loss:0.625217 m_loss:2.650012 q_loss:0.714802
+DEBUG:root:supervised loss:4.045846 pr_loss:0.812908 m_loss:2.356219 q_loss:0.876719
+DEBUG:root:supervised loss:3.426432 pr_loss:0.566681 m_loss:2.185242 q_loss:0.674510
+DEBUG:root:supervised loss:3.564938 pr_loss:0.367167 m_loss:2.864093 q_loss:0.333678
+DEBUG:root:supervised loss:4.097909 pr_loss:0.651493 m_loss:2.653603 q_loss:0.792813
+DEBUG:root:supervised loss:3.655813 pr_loss:0.634507 m_loss:2.267344 q_loss:0.753962
+DEBUG:root:supervised loss:3.567273 pr_loss:0.580009 m_loss:2.241311 q_loss:0.745953
+DEBUG:root:supervised loss:3.598817 pr_loss:0.407951 m_loss:2.837458 q_loss:0.353408
+DEBUG:root:supervised loss:3.831172 pr_loss:0.649174 m_loss:2.389443 q_loss:0.792555
+DEBUG:root:supervised loss:3.281431 pr_loss:0.650544 m_loss:1.937850 q_loss:0.693037
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 9 sup:3.768644 unsup:0.000000
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:3.075881 pr_loss:0.243750 m_loss:2.534285 q_loss:0.297846 grad:1.048415
+DEBUG:root:supervised loss:3.327817 pr_loss:0.475833 m_loss:2.370702 q_loss:0.481282 grad:1.079107
+DEBUG:root:supervised loss:2.691507 pr_loss:0.375990 m_loss:1.912465 q_loss:0.403052 grad:0.941234
+DEBUG:root:supervised loss:2.248521 pr_loss:0.364727 m_loss:1.490265 q_loss:0.393529 grad:1.045000
+DEBUG:root:supervised loss:3.264607 pr_loss:0.248036 m_loss:2.636259 q_loss:0.380311 grad:0.916890
+DEBUG:root:supervised loss:2.552285 pr_loss:0.182702 m_loss:2.136404 q_loss:0.233179 grad:1.111866
+DEBUG:root:supervised loss:2.459235 pr_loss:0.237679 m_loss:1.941846 q_loss:0.279710 grad:0.988884
+DEBUG:root:supervised loss:2.274582 pr_loss:0.428875 m_loss:1.435900 q_loss:0.409807 grad:1.289194
+DEBUG:root:supervised loss:2.794060 pr_loss:0.190304 m_loss:2.421783 q_loss:0.181972 grad:1.440797
+DEBUG:root:supervised loss:2.475818 pr_loss:0.176705 m_loss:2.122936 q_loss:0.176177 grad:1.529469
+DEBUG:root:supervised loss:2.203462 pr_loss:0.256003 m_loss:1.697274 q_loss:0.250185 grad:1.414796
+DEBUG:root:supervised loss:1.870475 pr_loss:0.157672 m_loss:1.587422 q_loss:0.125381 grad:1.309848
+INFO:root:avg training loss in epoch 10 sup:2.603188 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:3.969916 pr_loss:0.476725 m_loss:3.050438 q_loss:0.442752
+DEBUG:root:supervised loss:3.971551 pr_loss:0.573859 m_loss:2.913316 q_loss:0.484376
+DEBUG:root:supervised loss:3.736342 pr_loss:0.653589 m_loss:2.522494 q_loss:0.560259
+DEBUG:root:supervised loss:3.875074 pr_loss:0.886033 m_loss:2.219851 q_loss:0.769190
+DEBUG:root:supervised loss:3.169064 pr_loss:0.576062 m_loss:2.023284 q_loss:0.569718
+DEBUG:root:supervised loss:3.494276 pr_loss:0.410104 m_loss:2.723150 q_loss:0.361022
+DEBUG:root:supervised loss:3.553605 pr_loss:0.666112 m_loss:2.240202 q_loss:0.647291
+DEBUG:root:supervised loss:3.045986 pr_loss:0.630933 m_loss:1.793779 q_loss:0.621274
+DEBUG:root:supervised loss:3.466915 pr_loss:0.365291 m_loss:2.742398 q_loss:0.359227
+DEBUG:root:supervised loss:3.865534 pr_loss:0.667908 m_loss:2.536443 q_loss:0.661182
+DEBUG:root:supervised loss:3.418703 pr_loss:0.675540 m_loss:2.115025 q_loss:0.628138
+DEBUG:root:supervised loss:3.289076 pr_loss:0.589507 m_loss:2.114126 q_loss:0.585443
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 10 sup:3.571337 unsup:0.000000
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:2.839311 pr_loss:0.280260 m_loss:2.318090 q_loss:0.240962 grad:0.943351
+DEBUG:root:supervised loss:3.094271 pr_loss:0.427955 m_loss:2.195459 q_loss:0.470857 grad:1.534698
+DEBUG:root:supervised loss:2.479503 pr_loss:0.370333 m_loss:1.739441 q_loss:0.369729 grad:1.290492
+DEBUG:root:supervised loss:2.073868 pr_loss:0.371937 m_loss:1.341543 q_loss:0.360388 grad:1.245676
+DEBUG:root:supervised loss:3.026554 pr_loss:0.354018 m_loss:2.413638 q_loss:0.258898 grad:0.902803
+DEBUG:root:supervised loss:2.352373 pr_loss:0.169900 m_loss:1.954721 q_loss:0.227752 grad:1.724984
+DEBUG:root:supervised loss:2.303094 pr_loss:0.274382 m_loss:1.784661 q_loss:0.244050 grad:1.118771
+DEBUG:root:supervised loss:2.165936 pr_loss:0.390986 m_loss:1.311295 q_loss:0.463655 grad:2.063594
+DEBUG:root:supervised loss:2.580889 pr_loss:0.240905 m_loss:2.231506 q_loss:0.108478 grad:1.073697
+DEBUG:root:supervised loss:2.229397 pr_loss:0.159285 m_loss:1.954643 q_loss:0.115470 grad:0.890416
+DEBUG:root:supervised loss:2.005823 pr_loss:0.263162 m_loss:1.538853 q_loss:0.203809 grad:1.095771
+DEBUG:root:supervised loss:1.681345 pr_loss:0.096078 m_loss:1.429296 q_loss:0.155971 grad:1.109843
+INFO:root:avg training loss in epoch 11 sup:2.402697 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:3.325444 pr_loss:0.384014 m_loss:2.638993 q_loss:0.302437
+DEBUG:root:supervised loss:3.732934 pr_loss:0.646072 m_loss:2.423194 q_loss:0.663668
+DEBUG:root:supervised loss:3.357808 pr_loss:0.707757 m_loss:2.000189 q_loss:0.649862
+DEBUG:root:supervised loss:3.187446 pr_loss:0.620540 m_loss:2.015399 q_loss:0.551507
+DEBUG:root:supervised loss:3.731634 pr_loss:0.423420 m_loss:2.919729 q_loss:0.388485
+DEBUG:root:supervised loss:3.852685 pr_loss:0.535097 m_loss:2.804498 q_loss:0.513090
+DEBUG:root:supervised loss:3.660736 pr_loss:0.691093 m_loss:2.402134 q_loss:0.567509
+DEBUG:root:supervised loss:3.920420 pr_loss:0.997443 m_loss:2.127462 q_loss:0.795516
+DEBUG:root:supervised loss:3.116369 pr_loss:0.639667 m_loss:1.947848 q_loss:0.528853
+DEBUG:root:supervised loss:3.416229 pr_loss:0.477126 m_loss:2.626425 q_loss:0.312678
+DEBUG:root:supervised loss:3.413328 pr_loss:0.679776 m_loss:2.127749 q_loss:0.605803
+DEBUG:root:supervised loss:2.926072 pr_loss:0.647209 m_loss:1.722707 q_loss:0.556156
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 11 sup:3.470092 unsup:0.000000
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:2.412774 pr_loss:0.182579 m_loss:2.139285 q_loss:0.090909 grad:0.876164
+DEBUG:root:supervised loss:2.126433 pr_loss:0.147188 m_loss:1.878037 q_loss:0.101208 grad:1.005788
+DEBUG:root:supervised loss:1.887468 pr_loss:0.227974 m_loss:1.479995 q_loss:0.179500 grad:1.085028
+DEBUG:root:supervised loss:1.553650 pr_loss:0.095723 m_loss:1.352755 q_loss:0.105173 grad:0.899865
+DEBUG:root:supervised loss:2.811194 pr_loss:0.250478 m_loss:2.270410 q_loss:0.290306 grad:0.905999
+DEBUG:root:supervised loss:2.077216 pr_loss:0.137701 m_loss:1.812078 q_loss:0.127437 grad:1.037048
+DEBUG:root:supervised loss:2.070442 pr_loss:0.209570 m_loss:1.661109 q_loss:0.199762 grad:1.123817
+DEBUG:root:supervised loss:1.989854 pr_loss:0.406971 m_loss:1.232283 q_loss:0.350600 grad:2.169066
+DEBUG:root:supervised loss:2.690320 pr_loss:0.296991 m_loss:2.140825 q_loss:0.252504 grad:1.207515
+DEBUG:root:supervised loss:2.831941 pr_loss:0.426453 m_loss:2.020802 q_loss:0.384685 grad:1.251907
+DEBUG:root:supervised loss:2.228148 pr_loss:0.339696 m_loss:1.556600 q_loss:0.331851 grad:0.948556
+DEBUG:root:supervised loss:1.901495 pr_loss:0.339081 m_loss:1.232580 q_loss:0.329834 grad:1.127492
+INFO:root:avg training loss in epoch 12 sup:2.215078 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:3.347102 pr_loss:0.435925 m_loss:2.570014 q_loss:0.341163
+DEBUG:root:supervised loss:3.380313 pr_loss:0.648510 m_loss:2.055544 q_loss:0.676258
+DEBUG:root:supervised loss:2.889979 pr_loss:0.610785 m_loss:1.658962 q_loss:0.620233
+DEBUG:root:supervised loss:3.708470 pr_loss:0.458049 m_loss:2.858191 q_loss:0.392230
+DEBUG:root:supervised loss:3.851692 pr_loss:0.605536 m_loss:2.780631 q_loss:0.465526
+DEBUG:root:supervised loss:3.606941 pr_loss:0.607439 m_loss:2.354571 q_loss:0.644931
+DEBUG:root:supervised loss:3.777958 pr_loss:0.822054 m_loss:2.054033 q_loss:0.901871
+DEBUG:root:supervised loss:2.976047 pr_loss:0.464932 m_loss:1.873610 q_loss:0.637505
+DEBUG:root:supervised loss:3.262749 pr_loss:0.381296 m_loss:2.578741 q_loss:0.302712
+DEBUG:root:supervised loss:3.660248 pr_loss:0.633294 m_loss:2.345408 q_loss:0.681546
+DEBUG:root:supervised loss:3.267581 pr_loss:0.665595 m_loss:1.907294 q_loss:0.694693
+DEBUG:root:supervised loss:3.196252 pr_loss:0.560749 m_loss:1.955323 q_loss:0.680179
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 12 sup:3.410444 unsup:0.000000
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:2.201454 pr_loss:0.123184 m_loss:1.975620 q_loss:0.102650 grad:0.934309
+DEBUG:root:supervised loss:1.976848 pr_loss:0.142759 m_loss:1.749395 q_loss:0.084695 grad:1.263618
+DEBUG:root:supervised loss:1.753314 pr_loss:0.230411 m_loss:1.349417 q_loss:0.173486 grad:1.485457
+DEBUG:root:supervised loss:1.419293 pr_loss:0.137584 m_loss:1.213901 q_loss:0.067809 grad:1.275085
+DEBUG:root:supervised loss:2.607492 pr_loss:0.236133 m_loss:2.127858 q_loss:0.243501 grad:1.036146
+DEBUG:root:supervised loss:1.894327 pr_loss:0.099006 m_loss:1.690140 q_loss:0.105180 grad:0.965917
+DEBUG:root:supervised loss:1.992785 pr_loss:0.227591 m_loss:1.554556 q_loss:0.210638 grad:1.419788
+DEBUG:root:supervised loss:1.813406 pr_loss:0.312577 m_loss:1.142317 q_loss:0.358512 grad:2.559090
+DEBUG:root:supervised loss:2.503989 pr_loss:0.234009 m_loss:1.999434 q_loss:0.270546 grad:1.140428
+DEBUG:root:supervised loss:2.670666 pr_loss:0.424098 m_loss:1.890015 q_loss:0.356553 grad:1.380229
+DEBUG:root:supervised loss:2.099134 pr_loss:0.351549 m_loss:1.453626 q_loss:0.293959 grad:1.121994
+DEBUG:root:supervised loss:1.716628 pr_loss:0.306439 m_loss:1.110208 q_loss:0.299980 grad:1.273798
+INFO:root:avg training loss in epoch 13 sup:2.054111 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:3.648151 pr_loss:0.475280 m_loss:2.755556 q_loss:0.417316
+DEBUG:root:supervised loss:3.797443 pr_loss:0.616694 m_loss:2.696862 q_loss:0.483888
+DEBUG:root:supervised loss:3.527123 pr_loss:0.747094 m_loss:2.257839 q_loss:0.522190
+DEBUG:root:supervised loss:3.881115 pr_loss:1.089271 m_loss:1.992693 q_loss:0.799152
+DEBUG:root:supervised loss:3.046689 pr_loss:0.758648 m_loss:1.795568 q_loss:0.492472
+DEBUG:root:supervised loss:3.255591 pr_loss:0.431053 m_loss:2.503395 q_loss:0.321143
+DEBUG:root:supervised loss:3.785928 pr_loss:0.833932 m_loss:2.297118 q_loss:0.654878
+DEBUG:root:supervised loss:3.320937 pr_loss:0.789140 m_loss:1.841612 q_loss:0.690185
+DEBUG:root:supervised loss:3.211900 pr_loss:0.753835 m_loss:1.893954 q_loss:0.564111
+DEBUG:root:supervised loss:3.287483 pr_loss:0.453408 m_loss:2.510818 q_loss:0.323257
+DEBUG:root:supervised loss:3.408742 pr_loss:0.842625 m_loss:1.990532 q_loss:0.575585
+DEBUG:root:supervised loss:2.931109 pr_loss:0.784338 m_loss:1.596033 q_loss:0.550739
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 13 sup:3.425184 unsup:0.000000
+INFO:root:early stop countdown 4, learning rate 0.001500
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:2.354997 pr_loss:0.193355 m_loss:1.985474 q_loss:0.176168 grad:0.770287
+DEBUG:root:supervised loss:1.916724 pr_loss:0.184639 m_loss:1.612288 q_loss:0.119797 grad:1.380338
+DEBUG:root:supervised loss:1.826787 pr_loss:0.171396 m_loss:1.477678 q_loss:0.177714 grad:0.874482
+DEBUG:root:supervised loss:1.721185 pr_loss:0.342024 m_loss:1.069187 q_loss:0.309974 grad:1.303348
+DEBUG:root:supervised loss:2.098886 pr_loss:0.143010 m_loss:1.874998 q_loss:0.080878 grad:1.067407
+DEBUG:root:supervised loss:1.821129 pr_loss:0.096310 m_loss:1.659772 q_loss:0.065047 grad:0.896179
+DEBUG:root:supervised loss:1.614939 pr_loss:0.176573 m_loss:1.285997 q_loss:0.152369 grad:0.961474
+DEBUG:root:supervised loss:1.345164 pr_loss:0.085045 m_loss:1.169512 q_loss:0.090607 grad:0.964697
+DEBUG:root:supervised loss:2.336205 pr_loss:0.212865 m_loss:1.893166 q_loss:0.230174 grad:0.960982
+DEBUG:root:supervised loss:2.592297 pr_loss:0.461856 m_loss:1.809326 q_loss:0.321115 grad:1.422982
+DEBUG:root:supervised loss:1.953442 pr_loss:0.302088 m_loss:1.387946 q_loss:0.263408 grad:1.109812
+DEBUG:root:supervised loss:1.600672 pr_loss:0.281710 m_loss:1.052704 q_loss:0.266258 grad:1.061741
+INFO:root:avg training loss in epoch 14 sup:1.931869 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:3.628848 pr_loss:0.472932 m_loss:2.745326 q_loss:0.410590
+DEBUG:root:supervised loss:3.705515 pr_loss:0.534689 m_loss:2.700287 q_loss:0.470539
+DEBUG:root:supervised loss:3.406857 pr_loss:0.598178 m_loss:2.255581 q_loss:0.553098
+DEBUG:root:supervised loss:3.740614 pr_loss:0.925402 m_loss:1.964119 q_loss:0.851093
+DEBUG:root:supervised loss:2.867708 pr_loss:0.539555 m_loss:1.762280 q_loss:0.565873
+DEBUG:root:supervised loss:3.220110 pr_loss:0.415032 m_loss:2.501866 q_loss:0.303212
+DEBUG:root:supervised loss:3.228015 pr_loss:0.683232 m_loss:1.963136 q_loss:0.581647
+DEBUG:root:supervised loss:2.766521 pr_loss:0.624713 m_loss:1.583084 q_loss:0.558724
+DEBUG:root:supervised loss:3.165018 pr_loss:0.381043 m_loss:2.484419 q_loss:0.299556
+DEBUG:root:supervised loss:3.521128 pr_loss:0.660577 m_loss:2.265232 q_loss:0.595319
+DEBUG:root:supervised loss:3.139579 pr_loss:0.713997 m_loss:1.804589 q_loss:0.620993
+DEBUG:root:supervised loss:3.000319 pr_loss:0.575891 m_loss:1.885104 q_loss:0.539323
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 14 sup:3.282519 unsup:0.000000
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:1.999275 pr_loss:0.093601 m_loss:1.819235 q_loss:0.086439 grad:0.677600
+DEBUG:root:supervised loss:1.738639 pr_loss:0.069325 m_loss:1.613504 q_loss:0.055810 grad:0.641408
+DEBUG:root:supervised loss:1.553338 pr_loss:0.169497 m_loss:1.239342 q_loss:0.144498 grad:0.853938
+DEBUG:root:supervised loss:1.265452 pr_loss:0.066111 m_loss:1.125971 q_loss:0.073370 grad:0.746699
+DEBUG:root:supervised loss:2.380491 pr_loss:0.248933 m_loss:1.925719 q_loss:0.205839 grad:1.008710
+DEBUG:root:supervised loss:1.733933 pr_loss:0.097990 m_loss:1.550378 q_loss:0.085565 grad:0.715143
+DEBUG:root:supervised loss:1.811520 pr_loss:0.202000 m_loss:1.420225 q_loss:0.189295 grad:0.871704
+DEBUG:root:supervised loss:1.627539 pr_loss:0.271393 m_loss:1.064942 q_loss:0.291203 grad:1.019658
+DEBUG:root:supervised loss:2.402655 pr_loss:0.268317 m_loss:1.862761 q_loss:0.271577 grad:1.456640
+DEBUG:root:supervised loss:2.335966 pr_loss:0.324913 m_loss:1.771520 q_loss:0.239533 grad:0.853018
+DEBUG:root:supervised loss:1.762804 pr_loss:0.216229 m_loss:1.337661 q_loss:0.208915 grad:0.609149
+DEBUG:root:supervised loss:1.458060 pr_loss:0.212682 m_loss:1.019410 q_loss:0.225969 grad:0.863558
+INFO:root:avg training loss in epoch 15 sup:1.839139 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:3.139883 pr_loss:0.387939 m_loss:2.470407 q_loss:0.281538
+DEBUG:root:supervised loss:3.543603 pr_loss:0.684884 m_loss:2.240417 q_loss:0.618303
+DEBUG:root:supervised loss:3.107620 pr_loss:0.665634 m_loss:1.777951 q_loss:0.664034
+DEBUG:root:supervised loss:3.039214 pr_loss:0.602531 m_loss:1.860927 q_loss:0.575756
+DEBUG:root:supervised loss:3.614943 pr_loss:0.502390 m_loss:2.724779 q_loss:0.387774
+DEBUG:root:supervised loss:3.688746 pr_loss:0.557936 m_loss:2.681874 q_loss:0.448935
+DEBUG:root:supervised loss:3.399760 pr_loss:0.611727 m_loss:2.238328 q_loss:0.549706
+DEBUG:root:supervised loss:3.787334 pr_loss:0.981058 m_loss:1.942984 q_loss:0.863292
+DEBUG:root:supervised loss:2.944986 pr_loss:0.624322 m_loss:1.770108 q_loss:0.550556
+DEBUG:root:supervised loss:3.213175 pr_loss:0.429167 m_loss:2.491634 q_loss:0.292374
+DEBUG:root:supervised loss:3.207412 pr_loss:0.686371 m_loss:1.943411 q_loss:0.577629
+DEBUG:root:supervised loss:2.763416 pr_loss:0.640124 m_loss:1.567391 q_loss:0.555900
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 15 sup:3.287508 unsup:0.000000
+INFO:root:early stop countdown 3, learning rate 0.000750
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:1.915940 pr_loss:0.090879 m_loss:1.761791 q_loss:0.063270 grad:0.569195
+DEBUG:root:supervised loss:1.681840 pr_loss:0.070402 m_loss:1.564064 q_loss:0.047374 grad:0.725132
+DEBUG:root:supervised loss:1.450761 pr_loss:0.109490 m_loss:1.202275 q_loss:0.138996 grad:0.640816
+DEBUG:root:supervised loss:1.229728 pr_loss:0.075357 m_loss:1.080074 q_loss:0.074296 grad:0.818636
+DEBUG:root:supervised loss:2.265987 pr_loss:0.240221 m_loss:1.815235 q_loss:0.210532 grad:1.021878
+DEBUG:root:supervised loss:2.276577 pr_loss:0.299130 m_loss:1.729805 q_loss:0.247642 grad:0.810753
+DEBUG:root:supervised loss:1.723840 pr_loss:0.209385 m_loss:1.311512 q_loss:0.202944 grad:0.690874
+DEBUG:root:supervised loss:1.413611 pr_loss:0.199965 m_loss:0.999528 q_loss:0.214118 grad:0.747351
+DEBUG:root:supervised loss:2.218426 pr_loss:0.179520 m_loss:1.874968 q_loss:0.163938 grad:0.946750
+DEBUG:root:supervised loss:1.670068 pr_loss:0.082155 m_loss:1.504126 q_loss:0.083787 grad:0.591804
+DEBUG:root:supervised loss:1.752837 pr_loss:0.190546 m_loss:1.386076 q_loss:0.176215 grad:0.781998
+DEBUG:root:supervised loss:1.604221 pr_loss:0.268609 m_loss:1.041927 q_loss:0.293685 grad:1.045453
+INFO:root:avg training loss in epoch 16 sup:1.766986 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:3.117705 pr_loss:0.382290 m_loss:2.448035 q_loss:0.287380
+DEBUG:root:supervised loss:3.560771 pr_loss:0.697045 m_loss:2.243779 q_loss:0.619946
+DEBUG:root:supervised loss:3.120687 pr_loss:0.687366 m_loss:1.773456 q_loss:0.659865
+DEBUG:root:supervised loss:3.031511 pr_loss:0.623402 m_loss:1.847341 q_loss:0.560768
+DEBUG:root:supervised loss:3.563524 pr_loss:0.498373 m_loss:2.682616 q_loss:0.382536
+DEBUG:root:supervised loss:3.671581 pr_loss:0.553810 m_loss:2.666423 q_loss:0.451349
+DEBUG:root:supervised loss:3.361309 pr_loss:0.607426 m_loss:2.220741 q_loss:0.533142
+DEBUG:root:supervised loss:3.759462 pr_loss:0.973065 m_loss:1.935799 q_loss:0.850597
+DEBUG:root:supervised loss:2.951693 pr_loss:0.623097 m_loss:1.788011 q_loss:0.540585
+DEBUG:root:supervised loss:3.195904 pr_loss:0.422654 m_loss:2.477134 q_loss:0.296115
+DEBUG:root:supervised loss:3.180809 pr_loss:0.655446 m_loss:1.952133 q_loss:0.573231
+DEBUG:root:supervised loss:2.711115 pr_loss:0.610689 m_loss:1.558864 q_loss:0.541562
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 16 sup:3.268839 unsup:0.000000
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:2.192302 pr_loss:0.208466 m_loss:1.786355 q_loss:0.197481 grad:1.014588
+DEBUG:root:supervised loss:2.247957 pr_loss:0.291187 m_loss:1.712314 q_loss:0.244457 grad:0.909534
+DEBUG:root:supervised loss:1.694031 pr_loss:0.200233 m_loss:1.296539 q_loss:0.197259 grad:0.696458
+DEBUG:root:supervised loss:1.378178 pr_loss:0.192591 m_loss:0.977749 q_loss:0.207837 grad:0.666350
+DEBUG:root:supervised loss:2.162496 pr_loss:0.155286 m_loss:1.849407 q_loss:0.157803 grad:0.796209
+DEBUG:root:supervised loss:1.653037 pr_loss:0.081882 m_loss:1.487264 q_loss:0.083890 grad:0.569192
+DEBUG:root:supervised loss:1.700549 pr_loss:0.163529 m_loss:1.370680 q_loss:0.166340 grad:0.956375
+DEBUG:root:supervised loss:1.564145 pr_loss:0.250955 m_loss:1.022079 q_loss:0.291111 grad:0.834592
+DEBUG:root:supervised loss:1.898862 pr_loss:0.097203 m_loss:1.737497 q_loss:0.064161 grad:0.590149
+DEBUG:root:supervised loss:1.659648 pr_loss:0.066938 m_loss:1.544282 q_loss:0.048428 grad:0.638195
+DEBUG:root:supervised loss:1.447080 pr_loss:0.130571 m_loss:1.180174 q_loss:0.136334 grad:0.885071
+DEBUG:root:supervised loss:1.207839 pr_loss:0.057245 m_loss:1.075013 q_loss:0.075581 grad:0.710071
+INFO:root:avg training loss in epoch 17 sup:1.733844 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:3.126005 pr_loss:0.392329 m_loss:2.441324 q_loss:0.292352
+DEBUG:root:supervised loss:3.552763 pr_loss:0.704322 m_loss:2.229349 q_loss:0.619092
+DEBUG:root:supervised loss:3.057472 pr_loss:0.651600 m_loss:1.758320 q_loss:0.647553
+DEBUG:root:supervised loss:2.976584 pr_loss:0.572811 m_loss:1.844305 q_loss:0.559468
+DEBUG:root:supervised loss:3.193096 pr_loss:0.429197 m_loss:2.463928 q_loss:0.299972
+DEBUG:root:supervised loss:3.137672 pr_loss:0.626675 m_loss:1.925894 q_loss:0.585103
+DEBUG:root:supervised loss:2.674786 pr_loss:0.585933 m_loss:1.540461 q_loss:0.548391
+DEBUG:root:supervised loss:3.561825 pr_loss:0.491689 m_loss:2.682169 q_loss:0.387967
+DEBUG:root:supervised loss:3.665401 pr_loss:0.549380 m_loss:2.658639 q_loss:0.457382
+DEBUG:root:supervised loss:3.301090 pr_loss:0.548250 m_loss:2.214534 q_loss:0.538306
+DEBUG:root:supervised loss:3.718218 pr_loss:0.929200 m_loss:1.916488 q_loss:0.872530
+DEBUG:root:supervised loss:2.902102 pr_loss:0.582066 m_loss:1.754693 q_loss:0.565343
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 17 sup:3.238918 unsup:0.000000
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:2.127125 pr_loss:0.188967 m_loss:1.746621 q_loss:0.191537 grad:0.940645
+DEBUG:root:supervised loss:2.201858 pr_loss:0.285313 m_loss:1.681980 q_loss:0.234565 grad:0.963060
+DEBUG:root:supervised loss:1.659249 pr_loss:0.194232 m_loss:1.272131 q_loss:0.192886 grad:0.631991
+DEBUG:root:supervised loss:1.358386 pr_loss:0.194874 m_loss:0.959500 q_loss:0.204012 grad:0.728566
+DEBUG:root:supervised loss:1.876598 pr_loss:0.095940 m_loss:1.718316 q_loss:0.062342 grad:0.573503
+DEBUG:root:supervised loss:1.636400 pr_loss:0.063766 m_loss:1.525785 q_loss:0.046849 grad:0.621715
+DEBUG:root:supervised loss:1.413852 pr_loss:0.116581 m_loss:1.164231 q_loss:0.133040 grad:0.857717
+DEBUG:root:supervised loss:1.186591 pr_loss:0.055202 m_loss:1.057189 q_loss:0.074200 grad:0.694619
+DEBUG:root:supervised loss:2.122187 pr_loss:0.145187 m_loss:1.817418 q_loss:0.159582 grad:0.854463
+DEBUG:root:supervised loss:1.623093 pr_loss:0.080540 m_loss:1.459833 q_loss:0.082721 grad:0.582676
+DEBUG:root:supervised loss:1.657830 pr_loss:0.160835 m_loss:1.341257 q_loss:0.155737 grad:0.784561
+DEBUG:root:supervised loss:1.547900 pr_loss:0.258899 m_loss:1.005134 q_loss:0.283866 grad:0.872487
+INFO:root:avg training loss in epoch 18 sup:1.700922 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:3.186361 pr_loss:0.427903 m_loss:2.460441 q_loss:0.298017
+DEBUG:root:supervised loss:3.143463 pr_loss:0.626849 m_loss:1.925766 q_loss:0.590848
+DEBUG:root:supervised loss:2.675365 pr_loss:0.583157 m_loss:1.542296 q_loss:0.549913
+DEBUG:root:supervised loss:3.541639 pr_loss:0.490988 m_loss:2.663762 q_loss:0.386890
+DEBUG:root:supervised loss:3.651644 pr_loss:0.542404 m_loss:2.651657 q_loss:0.457584
+DEBUG:root:supervised loss:3.312181 pr_loss:0.554797 m_loss:2.209746 q_loss:0.547639
+DEBUG:root:supervised loss:3.743402 pr_loss:0.951315 m_loss:1.912574 q_loss:0.879512
+DEBUG:root:supervised loss:2.936659 pr_loss:0.599436 m_loss:1.766482 q_loss:0.570741
+DEBUG:root:supervised loss:3.113097 pr_loss:0.395397 m_loss:2.430804 q_loss:0.286895
+DEBUG:root:supervised loss:3.549596 pr_loss:0.699438 m_loss:2.226207 q_loss:0.623951
+DEBUG:root:supervised loss:3.034286 pr_loss:0.632333 m_loss:1.749720 q_loss:0.652233
+DEBUG:root:supervised loss:2.966581 pr_loss:0.563087 m_loss:1.837665 q_loss:0.565829
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 18 sup:3.237856 unsup:0.000000
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:2.103647 pr_loss:0.145523 m_loss:1.802250 q_loss:0.155873 grad:0.865099
+DEBUG:root:supervised loss:1.607123 pr_loss:0.078225 m_loss:1.447322 q_loss:0.081575 grad:0.573764
+DEBUG:root:supervised loss:1.642071 pr_loss:0.158273 m_loss:1.330302 q_loss:0.153496 grad:0.752679
+DEBUG:root:supervised loss:1.529728 pr_loss:0.257192 m_loss:0.993450 q_loss:0.279086 grad:0.856644
+DEBUG:root:supervised loss:2.116470 pr_loss:0.198526 m_loss:1.727445 q_loss:0.190500 grad:1.038758
+DEBUG:root:supervised loss:2.145961 pr_loss:0.256851 m_loss:1.664713 q_loss:0.224397 grad:0.863470
+DEBUG:root:supervised loss:1.632878 pr_loss:0.185517 m_loss:1.258339 q_loss:0.189022 grad:0.671520
+DEBUG:root:supervised loss:1.337803 pr_loss:0.182449 m_loss:0.955466 q_loss:0.199889 grad:0.731565
+DEBUG:root:supervised loss:1.842127 pr_loss:0.093289 m_loss:1.690676 q_loss:0.058162 grad:0.550241
+DEBUG:root:supervised loss:1.605841 pr_loss:0.059479 m_loss:1.499811 q_loss:0.046551 grad:0.663791
+DEBUG:root:supervised loss:1.382720 pr_loss:0.100777 m_loss:1.148175 q_loss:0.133768 grad:0.756357
+DEBUG:root:supervised loss:1.166059 pr_loss:0.053473 m_loss:1.040742 q_loss:0.071844 grad:0.714198
+INFO:root:avg training loss in epoch 19 sup:1.676036 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:3.107775 pr_loss:0.393403 m_loss:2.429284 q_loss:0.285089
+DEBUG:root:supervised loss:3.538562 pr_loss:0.705752 m_loss:2.210452 q_loss:0.622358
+DEBUG:root:supervised loss:3.027841 pr_loss:0.633485 m_loss:1.742111 q_loss:0.652245
+DEBUG:root:supervised loss:2.942792 pr_loss:0.568005 m_loss:1.832276 q_loss:0.542511
+DEBUG:root:supervised loss:3.560404 pr_loss:0.499258 m_loss:2.668046 q_loss:0.393100
+DEBUG:root:supervised loss:3.659254 pr_loss:0.547952 m_loss:2.651838 q_loss:0.459464
+DEBUG:root:supervised loss:3.299493 pr_loss:0.563741 m_loss:2.202190 q_loss:0.533562
+DEBUG:root:supervised loss:3.718776 pr_loss:0.962162 m_loss:1.901182 q_loss:0.855431
+DEBUG:root:supervised loss:2.883649 pr_loss:0.607032 m_loss:1.740838 q_loss:0.535779
+DEBUG:root:supervised loss:3.180519 pr_loss:0.431462 m_loss:2.451847 q_loss:0.297210
+DEBUG:root:supervised loss:3.120804 pr_loss:0.625107 m_loss:1.911098 q_loss:0.584599
+DEBUG:root:supervised loss:2.642066 pr_loss:0.578804 m_loss:1.529516 q_loss:0.533745
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 19 sup:3.223495 unsup:0.000000
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:1.824165 pr_loss:0.091457 m_loss:1.676019 q_loss:0.056690 grad:0.529651
+DEBUG:root:supervised loss:1.587904 pr_loss:0.054976 m_loss:1.487484 q_loss:0.045443 grad:0.612344
+DEBUG:root:supervised loss:1.371022 pr_loss:0.101851 m_loss:1.136832 q_loss:0.132338 grad:0.816273
+DEBUG:root:supervised loss:1.147836 pr_loss:0.050617 m_loss:1.026570 q_loss:0.070649 grad:0.670613
+DEBUG:root:supervised loss:2.052211 pr_loss:0.144167 m_loss:1.762332 q_loss:0.145712 grad:0.853456
+DEBUG:root:supervised loss:1.558390 pr_loss:0.065477 m_loss:1.415480 q_loss:0.077433 grad:0.532694
+DEBUG:root:supervised loss:1.611231 pr_loss:0.160471 m_loss:1.303705 q_loss:0.147056 grad:1.028724
+DEBUG:root:supervised loss:1.479872 pr_loss:0.239143 m_loss:0.974355 q_loss:0.266374 grad:0.822767
+DEBUG:root:supervised loss:2.095132 pr_loss:0.191973 m_loss:1.713734 q_loss:0.189425 grad:1.061353
+DEBUG:root:supervised loss:2.123006 pr_loss:0.252672 m_loss:1.650999 q_loss:0.219335 grad:0.884215
+DEBUG:root:supervised loss:1.611961 pr_loss:0.179554 m_loss:1.247270 q_loss:0.185136 grad:0.638511
+DEBUG:root:supervised loss:1.326073 pr_loss:0.179705 m_loss:0.949714 q_loss:0.196654 grad:0.744957
+INFO:root:avg training loss in epoch 20 sup:1.649067 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:3.169097 pr_loss:0.425908 m_loss:2.447363 q_loss:0.295826
+DEBUG:root:supervised loss:3.124300 pr_loss:0.621045 m_loss:1.911269 q_loss:0.591985
+DEBUG:root:supervised loss:2.643482 pr_loss:0.575427 m_loss:1.529213 q_loss:0.538843
+DEBUG:root:supervised loss:3.546094 pr_loss:0.500486 m_loss:2.653204 q_loss:0.392405
+DEBUG:root:supervised loss:3.650092 pr_loss:0.546402 m_loss:2.648936 q_loss:0.454754
+DEBUG:root:supervised loss:3.300978 pr_loss:0.560624 m_loss:2.199392 q_loss:0.540961
+DEBUG:root:supervised loss:3.714587 pr_loss:0.955099 m_loss:1.897264 q_loss:0.862224
+DEBUG:root:supervised loss:2.885014 pr_loss:0.596957 m_loss:1.745200 q_loss:0.542857
+DEBUG:root:supervised loss:3.091459 pr_loss:0.389580 m_loss:2.421297 q_loss:0.280581
+DEBUG:root:supervised loss:3.531098 pr_loss:0.702177 m_loss:2.205256 q_loss:0.623665
+DEBUG:root:supervised loss:3.025480 pr_loss:0.635812 m_loss:1.733636 q_loss:0.656032
+DEBUG:root:supervised loss:2.932119 pr_loss:0.560181 m_loss:1.824597 q_loss:0.547341
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 20 sup:3.217817 unsup:0.000000
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:2.066419 pr_loss:0.183954 m_loss:1.696450 q_loss:0.186014 grad:1.037547
+DEBUG:root:supervised loss:2.104050 pr_loss:0.252918 m_loss:1.634335 q_loss:0.216797 grad:0.877510
+DEBUG:root:supervised loss:1.596409 pr_loss:0.179384 m_loss:1.234013 q_loss:0.183012 grad:0.630814
+DEBUG:root:supervised loss:1.314399 pr_loss:0.179528 m_loss:0.940581 q_loss:0.194289 grad:0.736084
+DEBUG:root:supervised loss:1.781720 pr_loss:0.088899 m_loss:1.639283 q_loss:0.053538 grad:0.511934
+DEBUG:root:supervised loss:1.551140 pr_loss:0.050696 m_loss:1.459433 q_loss:0.041011 grad:0.597941
+DEBUG:root:supervised loss:1.338025 pr_loss:0.097985 m_loss:1.113017 q_loss:0.127023 grad:0.813088
+DEBUG:root:supervised loss:1.115650 pr_loss:0.048430 m_loss:0.999536 q_loss:0.067684 grad:0.671417
+DEBUG:root:supervised loss:2.025919 pr_loss:0.137070 m_loss:1.744017 q_loss:0.144831 grad:0.886625
+DEBUG:root:supervised loss:1.547230 pr_loss:0.068328 m_loss:1.400388 q_loss:0.078514 grad:0.574037
+DEBUG:root:supervised loss:1.586378 pr_loss:0.150792 m_loss:1.287880 q_loss:0.147705 grad:0.766808
+DEBUG:root:supervised loss:1.489298 pr_loss:0.247790 m_loss:0.976865 q_loss:0.264643 grad:0.925005
+INFO:root:avg training loss in epoch 21 sup:1.626386 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:3.524552 pr_loss:0.501026 m_loss:2.633691 q_loss:0.389835
+DEBUG:root:supervised loss:3.648717 pr_loss:0.549032 m_loss:2.644499 q_loss:0.455187
+DEBUG:root:supervised loss:3.296947 pr_loss:0.556705 m_loss:2.194525 q_loss:0.545716
+DEBUG:root:supervised loss:3.728404 pr_loss:0.959306 m_loss:1.893627 q_loss:0.875471
+DEBUG:root:supervised loss:2.908601 pr_loss:0.599159 m_loss:1.756411 q_loss:0.553031
+DEBUG:root:supervised loss:3.165102 pr_loss:0.423556 m_loss:2.444787 q_loss:0.296758
+DEBUG:root:supervised loss:3.124442 pr_loss:0.618924 m_loss:1.910716 q_loss:0.594802
+DEBUG:root:supervised loss:2.635917 pr_loss:0.574556 m_loss:1.522102 q_loss:0.539260
+DEBUG:root:supervised loss:3.085605 pr_loss:0.391066 m_loss:2.413113 q_loss:0.281425
+DEBUG:root:supervised loss:3.548046 pr_loss:0.709321 m_loss:2.206136 q_loss:0.632589
+DEBUG:root:supervised loss:3.028159 pr_loss:0.636081 m_loss:1.727248 q_loss:0.664830
+DEBUG:root:supervised loss:2.937375 pr_loss:0.557964 m_loss:1.820284 q_loss:0.559126
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 21 sup:3.219322 unsup:0.000000
+INFO:root:early stop countdown 2, learning rate 0.000375
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:2.026666 pr_loss:0.186993 m_loss:1.659197 q_loss:0.180475 grad:1.066238
+DEBUG:root:supervised loss:2.044684 pr_loss:0.232211 m_loss:1.608778 q_loss:0.203696 grad:0.877525
+DEBUG:root:supervised loss:1.553591 pr_loss:0.169880 m_loss:1.210928 q_loss:0.172783 grad:0.709523
+DEBUG:root:supervised loss:1.264495 pr_loss:0.166691 m_loss:0.913143 q_loss:0.184661 grad:0.693385
+DEBUG:root:supervised loss:1.764218 pr_loss:0.087152 m_loss:1.624501 q_loss:0.052565 grad:0.530498
+DEBUG:root:supervised loss:1.533810 pr_loss:0.049836 m_loss:1.444041 q_loss:0.039933 grad:0.597805
+DEBUG:root:supervised loss:1.317418 pr_loss:0.093538 m_loss:1.097654 q_loss:0.126225 grad:0.761333
+DEBUG:root:supervised loss:1.100710 pr_loss:0.048115 m_loss:0.986495 q_loss:0.066099 grad:0.668644
+DEBUG:root:supervised loss:1.996348 pr_loss:0.136372 m_loss:1.721404 q_loss:0.138572 grad:0.852260
+DEBUG:root:supervised loss:1.528648 pr_loss:0.065885 m_loss:1.384914 q_loss:0.077849 grad:0.552208
+DEBUG:root:supervised loss:1.575968 pr_loss:0.149383 m_loss:1.278220 q_loss:0.148366 grad:0.780529
+DEBUG:root:supervised loss:1.472622 pr_loss:0.243962 m_loss:0.967495 q_loss:0.261165 grad:0.865276
+INFO:root:avg training loss in epoch 22 sup:1.598265 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:3.086079 pr_loss:0.392873 m_loss:2.411845 q_loss:0.281361
+DEBUG:root:supervised loss:3.538513 pr_loss:0.712487 m_loss:2.192520 q_loss:0.633506
+DEBUG:root:supervised loss:3.019878 pr_loss:0.634878 m_loss:1.717484 q_loss:0.667517
+DEBUG:root:supervised loss:2.932841 pr_loss:0.553062 m_loss:1.821535 q_loss:0.558243
+DEBUG:root:supervised loss:3.162041 pr_loss:0.426648 m_loss:2.437948 q_loss:0.297445
+DEBUG:root:supervised loss:3.107353 pr_loss:0.617316 m_loss:1.896085 q_loss:0.593952
+DEBUG:root:supervised loss:2.627020 pr_loss:0.572348 m_loss:1.517922 q_loss:0.536750
+DEBUG:root:supervised loss:3.528181 pr_loss:0.500617 m_loss:2.636953 q_loss:0.390610
+DEBUG:root:supervised loss:3.648472 pr_loss:0.550282 m_loss:2.642076 q_loss:0.456113
+DEBUG:root:supervised loss:3.285945 pr_loss:0.552370 m_loss:2.190159 q_loss:0.543416
+DEBUG:root:supervised loss:3.718221 pr_loss:0.957887 m_loss:1.885086 q_loss:0.875248
+DEBUG:root:supervised loss:2.890516 pr_loss:0.595553 m_loss:1.746124 q_loss:0.548839
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 22 sup:3.212088 unsup:0.000000
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:1.984290 pr_loss:0.135388 m_loss:1.713685 q_loss:0.135217 grad:0.848544
+DEBUG:root:supervised loss:1.520805 pr_loss:0.064865 m_loss:1.378139 q_loss:0.077801 grad:0.551225
+DEBUG:root:supervised loss:1.567226 pr_loss:0.147569 m_loss:1.272161 q_loss:0.147495 grad:0.774913
+DEBUG:root:supervised loss:1.460898 pr_loss:0.241681 m_loss:0.960142 q_loss:0.259074 grad:0.828849
+DEBUG:root:supervised loss:2.001584 pr_loss:0.182396 m_loss:1.644618 q_loss:0.174570 grad:1.074563
+DEBUG:root:supervised loss:2.031827 pr_loss:0.231343 m_loss:1.595703 q_loss:0.204781 grad:0.876072
+DEBUG:root:supervised loss:1.540445 pr_loss:0.167614 m_loss:1.200344 q_loss:0.172487 grad:0.671378
+DEBUG:root:supervised loss:1.258279 pr_loss:0.165718 m_loss:0.908837 q_loss:0.183724 grad:0.689200
+DEBUG:root:supervised loss:1.753367 pr_loss:0.087087 m_loss:1.614938 q_loss:0.051342 grad:0.519426
+DEBUG:root:supervised loss:1.525769 pr_loss:0.050485 m_loss:1.434409 q_loss:0.040874 grad:0.605093
+DEBUG:root:supervised loss:1.315649 pr_loss:0.095824 m_loss:1.092897 q_loss:0.126929 grad:0.820213
+DEBUG:root:supervised loss:1.096592 pr_loss:0.046500 m_loss:0.983974 q_loss:0.066118 grad:0.658642
+INFO:root:avg training loss in epoch 23 sup:1.588061 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:3.085484 pr_loss:0.394125 m_loss:2.409380 q_loss:0.281978
+DEBUG:root:supervised loss:3.541345 pr_loss:0.717466 m_loss:2.192282 q_loss:0.631597
+DEBUG:root:supervised loss:3.017694 pr_loss:0.634422 m_loss:1.717333 q_loss:0.665938
+DEBUG:root:supervised loss:2.922552 pr_loss:0.553469 m_loss:1.817948 q_loss:0.551135
+DEBUG:root:supervised loss:3.165873 pr_loss:0.430323 m_loss:2.436665 q_loss:0.298885
+DEBUG:root:supervised loss:3.107144 pr_loss:0.617999 m_loss:1.895614 q_loss:0.593530
+DEBUG:root:supervised loss:2.614329 pr_loss:0.570333 m_loss:1.510997 q_loss:0.532999
+DEBUG:root:supervised loss:3.529826 pr_loss:0.502940 m_loss:2.632136 q_loss:0.394750
+DEBUG:root:supervised loss:3.650797 pr_loss:0.553708 m_loss:2.638846 q_loss:0.458243
+DEBUG:root:supervised loss:3.276387 pr_loss:0.550061 m_loss:2.187877 q_loss:0.538448
+DEBUG:root:supervised loss:3.713928 pr_loss:0.960485 m_loss:1.880928 q_loss:0.872514
+DEBUG:root:supervised loss:2.875489 pr_loss:0.596417 m_loss:1.737449 q_loss:0.541623
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 23 sup:3.208404 unsup:0.000000
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:1.985818 pr_loss:0.178174 m_loss:1.635334 q_loss:0.172310 grad:1.070542
+DEBUG:root:supervised loss:2.023628 pr_loss:0.231354 m_loss:1.588558 q_loss:0.203716 grad:0.897301
+DEBUG:root:supervised loss:1.533970 pr_loss:0.166924 m_loss:1.195298 q_loss:0.171747 grad:0.674208
+DEBUG:root:supervised loss:1.253948 pr_loss:0.166181 m_loss:0.904952 q_loss:0.182815 grad:0.702608
+DEBUG:root:supervised loss:1.949593 pr_loss:0.132898 m_loss:1.689381 q_loss:0.127314 grad:0.806744
+DEBUG:root:supervised loss:1.500836 pr_loss:0.061612 m_loss:1.361258 q_loss:0.077966 grad:0.554837
+DEBUG:root:supervised loss:1.541264 pr_loss:0.141911 m_loss:1.255508 q_loss:0.143845 grad:0.831854
+DEBUG:root:supervised loss:1.433690 pr_loss:0.234098 m_loss:0.945919 q_loss:0.253673 grad:0.828182
+DEBUG:root:supervised loss:1.742161 pr_loss:0.086277 m_loss:1.605268 q_loss:0.050616 grad:0.512392
+DEBUG:root:supervised loss:1.515357 pr_loss:0.049373 m_loss:1.425922 q_loss:0.040061 grad:0.602636
+DEBUG:root:supervised loss:1.305164 pr_loss:0.093635 m_loss:1.085605 q_loss:0.125924 grad:0.795927
+DEBUG:root:supervised loss:1.088892 pr_loss:0.045956 m_loss:0.977792 q_loss:0.065144 grad:0.665273
+INFO:root:avg training loss in epoch 24 sup:1.572860 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:3.524421 pr_loss:0.502540 m_loss:2.627523 q_loss:0.394358
+DEBUG:root:supervised loss:3.650667 pr_loss:0.553656 m_loss:2.637976 q_loss:0.459035
+DEBUG:root:supervised loss:3.276252 pr_loss:0.549643 m_loss:2.185639 q_loss:0.540970
+DEBUG:root:supervised loss:3.719511 pr_loss:0.963906 m_loss:1.878630 q_loss:0.876976
+DEBUG:root:supervised loss:2.879394 pr_loss:0.597052 m_loss:1.737707 q_loss:0.544634
+DEBUG:root:supervised loss:3.082962 pr_loss:0.395427 m_loss:2.405827 q_loss:0.281708
+DEBUG:root:supervised loss:3.540923 pr_loss:0.718905 m_loss:2.188259 q_loss:0.633759
+DEBUG:root:supervised loss:3.015888 pr_loss:0.635155 m_loss:1.712805 q_loss:0.667929
+DEBUG:root:supervised loss:2.921244 pr_loss:0.551534 m_loss:1.816346 q_loss:0.553364
+DEBUG:root:supervised loss:3.164824 pr_loss:0.430737 m_loss:2.434201 q_loss:0.299885
+DEBUG:root:supervised loss:3.108291 pr_loss:0.618896 m_loss:1.893193 q_loss:0.596202
+DEBUG:root:supervised loss:2.611888 pr_loss:0.569745 m_loss:1.509101 q_loss:0.533041
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 24 sup:3.208022 unsup:0.000000
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:1.732799 pr_loss:0.085634 m_loss:1.597260 q_loss:0.049905 grad:0.502910
+DEBUG:root:supervised loss:1.507297 pr_loss:0.048448 m_loss:1.419230 q_loss:0.039620 grad:0.593625
+DEBUG:root:supervised loss:1.297913 pr_loss:0.092550 m_loss:1.080448 q_loss:0.124915 grad:0.788470
+DEBUG:root:supervised loss:1.081675 pr_loss:0.045466 m_loss:0.971762 q_loss:0.064447 grad:0.659530
+DEBUG:root:supervised loss:1.980160 pr_loss:0.182961 m_loss:1.623558 q_loss:0.173641 grad:1.107683
+DEBUG:root:supervised loss:1.999510 pr_loss:0.224471 m_loss:1.577058 q_loss:0.197981 grad:0.856106
+DEBUG:root:supervised loss:1.515506 pr_loss:0.160714 m_loss:1.186958 q_loss:0.167834 grad:0.648781
+DEBUG:root:supervised loss:1.240628 pr_loss:0.161175 m_loss:0.900183 q_loss:0.179270 grad:0.685540
+DEBUG:root:supervised loss:1.947716 pr_loss:0.134591 m_loss:1.681989 q_loss:0.131135 grad:0.864177
+DEBUG:root:supervised loss:1.490148 pr_loss:0.060113 m_loss:1.354634 q_loss:0.075401 grad:0.553975
+DEBUG:root:supervised loss:1.535967 pr_loss:0.143199 m_loss:1.250346 q_loss:0.142423 grad:0.877320
+DEBUG:root:supervised loss:1.431295 pr_loss:0.233420 m_loss:0.945705 q_loss:0.252170 grad:0.880542
+INFO:root:avg training loss in epoch 25 sup:1.563384 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:3.517354 pr_loss:0.502572 m_loss:2.622021 q_loss:0.392761
+DEBUG:root:supervised loss:3.648224 pr_loss:0.552457 m_loss:2.638100 q_loss:0.457667
+DEBUG:root:supervised loss:3.286787 pr_loss:0.555761 m_loss:2.184409 q_loss:0.546617
+DEBUG:root:supervised loss:3.730008 pr_loss:0.970582 m_loss:1.877252 q_loss:0.882174
+DEBUG:root:supervised loss:2.896447 pr_loss:0.603149 m_loss:1.742229 q_loss:0.551068
+DEBUG:root:supervised loss:3.077861 pr_loss:0.394610 m_loss:2.403464 q_loss:0.279787
+DEBUG:root:supervised loss:3.540473 pr_loss:0.720362 m_loss:2.184006 q_loss:0.636105
+DEBUG:root:supervised loss:3.018926 pr_loss:0.640080 m_loss:1.707551 q_loss:0.671296
+DEBUG:root:supervised loss:2.930269 pr_loss:0.557275 m_loss:1.814011 q_loss:0.558983
+DEBUG:root:supervised loss:3.161422 pr_loss:0.428963 m_loss:2.432222 q_loss:0.300237
+DEBUG:root:supervised loss:3.116467 pr_loss:0.624014 m_loss:1.891797 q_loss:0.600656
+DEBUG:root:supervised loss:2.620116 pr_loss:0.572933 m_loss:1.510939 q_loss:0.536244
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 25 sup:3.212030 unsup:0.000000
+INFO:root:early stop countdown 1, learning rate 0.000188
+DEBUG:root:bucket 4 instance 130
+DEBUG:root:bucket 7 instance 9
+DEBUG:root:bucket 3 instance 107
+DEBUG:root:bucket 5 instance 88
+DEBUG:root:bucket 2 instance 27
+DEBUG:root:bucket 6 instance 42
+DEBUG:root:bucket 8 instance 2
+DEBUG:root:supervised loss:1.936314 pr_loss:0.133029 m_loss:1.674402 q_loss:0.128883 grad:0.853013
+DEBUG:root:supervised loss:1.484977 pr_loss:0.060335 m_loss:1.349271 q_loss:0.075371 grad:0.552207
+DEBUG:root:supervised loss:1.528995 pr_loss:0.140973 m_loss:1.245590 q_loss:0.142433 grad:0.812608
+DEBUG:root:supervised loss:1.427726 pr_loss:0.234016 m_loss:0.942418 q_loss:0.251291 grad:0.858112
+DEBUG:root:supervised loss:1.963945 pr_loss:0.178842 m_loss:1.614176 q_loss:0.170926 grad:1.106480
+DEBUG:root:supervised loss:1.989221 pr_loss:0.223348 m_loss:1.569298 q_loss:0.196574 grad:0.877067
+DEBUG:root:supervised loss:1.506041 pr_loss:0.159214 m_loss:1.180405 q_loss:0.166421 grad:0.659062
+DEBUG:root:supervised loss:1.234224 pr_loss:0.160393 m_loss:0.896018 q_loss:0.177813 grad:0.693966
+DEBUG:root:supervised loss:1.711692 pr_loss:0.084678 m_loss:1.578866 q_loss:0.048148 grad:0.495304
+DEBUG:root:supervised loss:1.488640 pr_loss:0.046770 m_loss:1.403557 q_loss:0.038313 grad:0.586398
+DEBUG:root:supervised loss:1.281178 pr_loss:0.089945 m_loss:1.068599 q_loss:0.122634 grad:0.774033
+DEBUG:root:supervised loss:1.066955 pr_loss:0.044625 m_loss:0.959254 q_loss:0.063076 grad:0.652011
+INFO:root:avg training loss in epoch 26 sup:1.551659 unsup:0.000000
+DEBUG:root:bucket 5 instance 32
+DEBUG:root:bucket 7 instance 6
+DEBUG:root:bucket 4 instance 41
+DEBUG:root:bucket 3 instance 37
+DEBUG:root:bucket 6 instance 6
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:supervised loss:3.162009 pr_loss:0.429808 m_loss:2.431465 q_loss:0.300735
+DEBUG:root:supervised loss:3.112990 pr_loss:0.623970 m_loss:1.889336 q_loss:0.599685
+DEBUG:root:supervised loss:2.612378 pr_loss:0.572059 m_loss:1.506766 q_loss:0.533552
+DEBUG:root:supervised loss:3.078401 pr_loss:0.395086 m_loss:2.403436 q_loss:0.279879
+DEBUG:root:supervised loss:3.540126 pr_loss:0.722295 m_loss:2.182265 q_loss:0.635566
+DEBUG:root:supervised loss:3.019261 pr_loss:0.640712 m_loss:1.706866 q_loss:0.671683
+DEBUG:root:supervised loss:2.925349 pr_loss:0.556942 m_loss:1.812709 q_loss:0.555699
+DEBUG:root:supervised loss:3.518700 pr_loss:0.503240 m_loss:2.621230 q_loss:0.394231
+DEBUG:root:supervised loss:3.650716 pr_loss:0.554401 m_loss:2.637618 q_loss:0.458698
+DEBUG:root:supervised loss:3.278624 pr_loss:0.552064 m_loss:2.182920 q_loss:0.543641
+DEBUG:root:supervised loss:3.724377 pr_loss:0.970481 m_loss:1.873834 q_loss:0.880062
+DEBUG:root:supervised loss:2.884039 pr_loss:0.602202 m_loss:1.736374 q_loss:0.545464
+DEBUG:root:bucket 4 instance 55
+DEBUG:root:bucket 5 instance 26
+DEBUG:root:bucket 2 instance 13
+DEBUG:root:bucket 3 instance 30
+DEBUG:root:bucket 6 instance 11
+DEBUG:root:bucket 7 instance 1
+INFO:root:validation loss in epoch 26 sup:3.208914 unsup:0.000000
