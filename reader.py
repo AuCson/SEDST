@@ -169,13 +169,17 @@ class _ReaderBase:
 
     def _mark_batch_as_supervised(self, all_batches):
         supervised_num = int(len(all_batches) * cfg.spv_proportion / 100)
+        sup_turn, total_turn = 0, 0
         for i, batch in enumerate(all_batches):
             for dial in batch:
                 for turn in dial:
                     turn['supervised'] = i < supervised_num
                     if not turn['supervised']:
                         turn['degree'] = [0.] * cfg.degree_size # unsupervised learning. DB degree should be unknown
-        return all_batches
+                    if turn['supervised']:
+                        sup_turn += 1
+                    total_turn += 1
+        return all_batches, sup_turn, total_turn
 
     def _construct_mini_batch(self, data):
         all_batches = []
@@ -209,14 +213,24 @@ class _ReaderBase:
     def mini_batch_iterator(self, set_name):
         name_to_set = {'train': self.train, 'test': self.test, 'dev': self.dev}
         dial = name_to_set[set_name]
-        turn_bucket = self._bucket_by_turn(dial)
-        # self._shuffle_turn_bucket(turn_bucket)
-        all_batches = []
-        for k in turn_bucket:
-            batches = self._construct_mini_batch(turn_bucket[k])
-            all_batches += batches
-        self._mark_batch_as_supervised(all_batches)
-        random.shuffle(all_batches)
+        while True:
+            turn_bucket = self._bucket_by_turn(dial)
+            # self._shuffle_turn_bucket(turn_bucket)
+            all_batches = []
+            for k in turn_bucket:
+                batches = self._construct_mini_batch(turn_bucket[k])
+                all_batches += batches
+
+            _, sup_turn_num, total_turn_num = self._mark_batch_as_supervised(all_batches)
+            print('Dial spv proportion: {} Turn spv proportion: {}'.
+                  format(cfg.spv_proportion, sup_turn_num / total_turn_num * 100))
+            if cfg.spv_proportion / 100 * 0.9 <= sup_turn_num / total_turn_num <= cfg.spv_proportion / 100 * 1.1 \
+                    or set_name != 'train':
+                break
+            else:
+                print('Re-shuffling the dataset')
+                random.shuffle(dial)
+        random.shuffle(all_batches)  # don't change the order !
         for i,batch in enumerate(all_batches):
             yield self._transpose_batch(batch)
 
@@ -461,7 +475,7 @@ class KvretReader(_ReaderBase):
         self.tokenized_data_path = './data/kvret/'
         self._construct(cfg.train, cfg.dev, cfg.test, cfg.entity)
         #self.test = self.train
-        
+
     def _construct(self, train_json_path, dev_json_path, test_json_path, entity_json_path):
         construct_vocab = False
         if not os.path.isfile(cfg.vocab_path):
@@ -642,7 +656,7 @@ class KvretReader(_ReaderBase):
                     raw_constraints = constraint_dict.values()
                     raw_constraints_str = self._lemmatize(self._tokenize(' '.join(raw_constraints)))
                     constraints = raw_constraints_str.split()
-     
+
                     single_turn['constraint'] = constraints + ['EOS_Z1']
                     single_turn['turn_num'] = len(tokenized_dial)
                     single_turn['dial_id'] = dial_id
@@ -712,7 +726,11 @@ class KvretReader(_ReaderBase):
         :param response:
         :return:
         """
-        return 0
+        response = response.split()
+        if {'not', 'no', "n't"}.intersection(response):
+            return 0
+        else:
+            return 1
 
 
 class UbuntuDialogueReader(_ReaderBase):
@@ -848,7 +866,7 @@ class JDCorpusReader(_ReaderBase):
         dial = []
         for i,line in enumerate(raw_data):
             if i % 30000 == 0 and i:
-                print(i,end='\r')
+                print(i)
             idx, _, _,utter, speaker = tuple(line)
             speaker = int(speaker)
             if idx != prev_idx and dial:
@@ -880,7 +898,7 @@ class JDCorpusReader(_ReaderBase):
         encoded_data = []
         for dial_id,dial in enumerate(tokenized_data):
             if dial_id % 10000 == 0 and dial_id:
-                print(dial_id,end='\r')
+                print(dial_id)
             encoded_dial = []
             # construct turns with sliding window [R-1,U]:[R]
             i = 1
@@ -912,7 +930,7 @@ class JDCorpusReader(_ReaderBase):
 
     def utter_valid(self, utter):
         if utter.startswith('[ 订单 编号'):
-            return False
+           return False
         return True
 
     def utter_clean(self, utter):

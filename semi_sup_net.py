@@ -48,7 +48,7 @@ def get_sparse_input_efficient(x_input_np):
     for t in range(x_input_np.shape[0]):
         for b in range(x_input_np.shape[1]):
             if x_input_np[t][b] not in ignore_index:
-                result[t][b][x_input_np[t][b]] = 1.0
+                result[t,b,x_input_np[t][b]] = 1.0
     result_np = result.transpose((1, 0, 2))
     result = torch.from_numpy(result_np).float()
     return result
@@ -137,7 +137,6 @@ class Attn(nn.Module):
         max_len = encoder_outputs.size(1)
         H = hidden.repeat(max_len, 1, 1).transpose(0, 1)
         energy = self.attn(torch.cat([H, encoder_outputs], 2))  # [B,T,2H]->[B,T,H]
-        # fix attention here
         energy = self.v(F.tanh(energy)).transpose(1,2) # [B,1,T]
         return energy
 
@@ -232,6 +231,9 @@ class MultiTurnInferenceDecoder_Z(nn.Module):
                 torch.split(scores, gen_score.size(1), dim=1))
             proba = gen_score + u_copy_score + m_copy_score
         appr_emb = self.mu(proba).unsqueeze(0)
+        # log_sigma_ae = self.log_sigma(proba)
+        # sigma_ae = torch.exp(log_sigma_ae)
+        # sampled_ae = appr_emb + torch.mul(sigma_ae, rand_eps)
         return appr_emb, gru_out, last_hidden, proba, appr_emb, None
 
 
@@ -305,7 +307,9 @@ class ResponseDecoder(nn.Module):
         self.emb = nn.Embedding(vocab_size, embed_size)
         self.attn_z = Attn(hidden_size)
         self.attn_u = Attn(hidden_size)
+        self.w4 = nn.Linear(hidden_size, hidden_size)
         self.gate_z = nn.Linear(hidden_size, hidden_size)
+        self.w5 = nn.Linear(hidden_size, hidden_size)
         self.gru = nn.GRU(embed_size + hidden_size + degree_size, hidden_size, dropout=dropout_rate)
         self.proj = nn.Linear(hidden_size * 3, vocab_size)
         self.proj_copy1 = nn.Linear(hidden_size, hidden_size)
@@ -327,7 +331,7 @@ class ResponseDecoder(nn.Module):
 
         z_context = self.attn_z(last_hidden, z_enc_out)
         u_context = self.attn_u(last_hidden, u_enc_out)
-        d_control = z_context + torch.mul(F.sigmoid(self.gate_z(z_context)),u_context)
+        d_control = z_context + torch.mul(F.sigmoid(self.gate_z(z_context)), u_context)
         gru_out, last_hidden = self.gru(torch.cat([d_control, m_embed, degree_input.unsqueeze(0)], dim=2), last_hidden)
         gen_score = self.proj(torch.cat([z_context, u_context, gru_out], 2)).squeeze(0)
         z_copy_score = F.tanh(self.proj_copy1(z_enc_out.transpose(0, 1)))  # [B,T,H]
@@ -352,7 +356,7 @@ class MultinomialKLDivergenceLoss(nn.Module):
         self.special_tokens = special_tokens
 
     def forward(self, p_proba, q_proba): # [B, T, V]
-        mask = torch.zeros(p_proba.size(0), p_proba.size(1))
+        mask = torch.ones(p_proba.size(0), p_proba.size(1))
         cnt = 0
         for i in range(q_proba.size(0)):
             flg = False
@@ -446,6 +450,8 @@ class SemiSupervisedSEDST(nn.Module):
         """
         pv_pz_proba = turn_states.get('pv_pz_proba', None)
         pv_z_outs = turn_states.get('pv_z_dec_outs', None)
+        pv_qz_proba = turn_states.get('pv_qz_proba', None)
+        pv_qz_outs = turn_states.get('pv_qz_dec_outs', None)
         batch_size = u_input.size(1)
         u_enc_out, u_enc_hidden = self.u_encoder(u_input, u_len)
         last_hidden = u_enc_hidden[:-1]
@@ -461,6 +467,7 @@ class SemiSupervisedSEDST(nn.Module):
             else:
                 rand_eps = Variable(torch.zeros(1, batch_size, cfg.embedding_size))
             if cfg.cuda: rand_eps = rand_eps.cuda()
+
             pz_ae, last_hidden, pz_dec_out, proba, appr_emb, log_sigma_ae = \
                 self.pz_decoder(u_input=u_input, u_enc_out=u_enc_out, pv_pz_proba=pv_pz_proba, pv_z_dec_out=pv_z_outs,
                                 embed_z=pz_ae, last_hidden=last_hidden, rand_eps=rand_eps, u_input_np=u_input_np,
@@ -493,27 +500,32 @@ class SemiSupervisedSEDST(nn.Module):
             pm_dec_proba = torch.stack(pm_dec_proba, dim=0)  # [T,B,V]
 
             # Q(z|u,m)
+            u_enc_out, u_enc_hidden = self.m_encoder(u_input, u_len)
+            m_enc_out, m_enc_hidden = self.m_encoder(m_input, m_len)
 
-            p_enc_out, p_enc_hidden = self.m_encoder(m_input, m_len)
-            last_hidden = p_enc_hidden[:-1]
+            last_hidden = u_enc_hidden[:-1]
 
             qz_ae = cuda_(Variable(torch.zeros(1, batch_size, self.embed_size)))
-            qz_proba, qz_mu, qz_log_sigma = [], [], []
+            qz_proba, qz_mu, qz_log_sigma, qz_dec_outs = [], [], [], []
             for t in range(z_length):
                 if cfg.sampling:
-                    rand_eps = cfg.alpha * Variable(torch.normal(means=torch.zeros(1, batch_size, cfg.embedding_size), std=1))
+                    rand_eps = self.alpha * Variable(torch.normal(means=torch.zeros(1, batch_size, cfg.embedding_size), std=1))
                 else:
                     rand_eps = Variable(torch.zeros(1, batch_size, cfg.embedding_size))
                 if cfg.cuda: rand_eps = rand_eps.cuda()
                 qz_ae, gru_out, last_hidden, proba, appr_emb, log_sigma_ae = \
-                    self.qz_decoder(u_input=u_input, u_enc_out=u_enc_out, pv_pz_proba=pv_pz_proba,
-                                 pv_z_dec_out=pv_z_outs,
-                                 m_input=p_input, m_enc_out=p_enc_out, u_input_np=u_input_np, m_input_np=m_input_np,
+                    self.qz_decoder(u_input=u_input, u_enc_out=u_enc_out, pv_pz_proba=pv_qz_proba,
+                                 pv_z_dec_out=pv_qz_outs,
+                                 m_input=m_input, m_enc_out=m_enc_out, u_input_np=u_input_np, m_input_np=m_input_np,
                                  embed_z=qz_ae, last_hidden=last_hidden, rand_eps=rand_eps)
                 qz_proba.append(proba)
                 qz_mu.append(appr_emb)
                 qz_log_sigma.append(log_sigma_ae)
+                qz_dec_outs.append(gru_out)
             qz_proba, qz_mu = torch.stack(qz_proba, dim=0), torch.stack(qz_mu, dim=0)
+            qz_dec_outs = torch.cat(qz_dec_outs, dim=0)
+            turn_states['pv_qz_dec_outs'], turn_states['pv_qz_proba'] = qz_dec_outs, qz_proba
+
             if is_train:
                 return pz_proba, qz_proba, pm_dec_proba, pz_mu, pz_log_sigma, qz_mu, qz_log_sigma, turn_states
             else:
@@ -725,18 +737,23 @@ class SemiSupervisedSEDST(nn.Module):
         pr_loss = self.pr_loss(pz_proba.view(-1, pz_proba.size(2)), z_input.view(-1))
         m_loss = self.dec_loss(pm_dec_proba.view(-1, pm_dec_proba.size(2)), m_input.view(-1))
         q_loss = self.q_loss(qz_proba.view(-1, pz_proba.size(2)), z_input.view(-1))
+
+        pr_loss, m_loss, q_loss = pr_loss, m_loss, q_loss
+
         if cfg.pretrain:
             loss = q_loss
         else:
             loss = pr_loss + m_loss + q_loss
-            #loss=pr_loss
         return loss, pr_loss, m_loss, q_loss
 
     def unsupervised_loss(self, mu_q, log_sigma_q, mu_p, log_sigma_p, pm_dec_proba, m_input, pz_proba, qz_proba):
         m_loss = self.dec_loss(pm_dec_proba.view(-1, pm_dec_proba.size(2)), m_input.view(-1))
         kl_div_loss = self.kl_loss(pz_proba, qz_proba.detach())
-        loss = m_loss + self.alpha * kl_div_loss
-        return loss, m_loss, self.alpha * kl_div_loss
+
+        m_loss, kl_div_loss = m_loss, kl_div_loss * self.alpha
+
+        loss = m_loss + kl_div_loss
+        return loss, m_loss, kl_div_loss
 
     def self_adjust(self, epoch):
         pass
