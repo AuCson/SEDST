@@ -475,7 +475,7 @@ class KvretReader(_ReaderBase):
         self.tokenized_data_path = './data/kvret/'
         self._construct(cfg.train, cfg.dev, cfg.test, cfg.entity)
         #self.test = self.train
-
+        
     def _construct(self, train_json_path, dev_json_path, test_json_path, entity_json_path):
         construct_vocab = False
         if not os.path.isfile(cfg.vocab_path):
@@ -656,7 +656,7 @@ class KvretReader(_ReaderBase):
                     raw_constraints = constraint_dict.values()
                     raw_constraints_str = self._lemmatize(self._tokenize(' '.join(raw_constraints)))
                     constraints = raw_constraints_str.split()
-
+     
                     single_turn['constraint'] = constraints + ['EOS_Z1']
                     single_turn['turn_num'] = len(tokenized_dial)
                     single_turn['dial_id'] = dial_id

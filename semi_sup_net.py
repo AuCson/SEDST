@@ -314,6 +314,7 @@ class ResponseDecoder(nn.Module):
         self.proj = nn.Linear(hidden_size * 3, vocab_size)
         self.proj_copy1 = nn.Linear(hidden_size, hidden_size)
         self.dropout_rate = dropout_rate
+        self.dropout = nn.Dropout(dropout_rate)
 
     def forward(self, z_enc_out, pz_proba, u_enc_out, m_t_input, degree_input, last_hidden):
         """
@@ -332,7 +333,9 @@ class ResponseDecoder(nn.Module):
         z_context = self.attn_z(last_hidden, z_enc_out)
         u_context = self.attn_u(last_hidden, u_enc_out)
         d_control = z_context + torch.mul(F.sigmoid(self.gate_z(z_context)), u_context)
-        gru_out, last_hidden = self.gru(torch.cat([d_control, m_embed, degree_input.unsqueeze(0)], dim=2), last_hidden)
+        embed = torch.cat([d_control, m_embed, degree_input.unsqueeze(0)], dim=2)
+        embed = self.dropout(embed)
+        gru_out, last_hidden = self.gru(embed, last_hidden)
         gen_score = self.proj(torch.cat([z_context, u_context, gru_out], 2)).squeeze(0)
         z_copy_score = F.tanh(self.proj_copy1(z_enc_out.transpose(0, 1)))  # [B,T,H]
         if not cfg.force_stable:

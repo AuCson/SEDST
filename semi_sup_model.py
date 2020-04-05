@@ -41,8 +41,9 @@ class Model:
         u_input_np = pad_sequences(py_batch['user'], cfg.u_max_ts, padding='post',truncating='pre').transpose((1, 0))
         z_input_np = pad_sequences(py_batch['latent'], padding='post').transpose((1, 0))
         m_input_np = pad_sequences(py_batch['response'], cfg.max_ts, padding='post', truncating='post').transpose((1, 0))
-        # fix p input
-        p_input_np = pad_sequences(py_batch['post'], cfg.u_max_ts, padding='post', truncating='post').transpose((1, 0))
+        # fix as paper
+        p_input_np = pad_sequences(py_batch['post'], cfg.u_max_ts,
+                                   padding='post', truncating='post').transpose((1, 0))
         u_len = np.array(py_batch['u_len'])
         m_len = np.array(py_batch['m_len'])
         p_len = np.array(py_batch['p_len'])
@@ -64,7 +65,6 @@ class Model:
         if self.base_epoch == -1:
             self.freeze_params()
         prev_min_loss, early_stop_count = 1e9, cfg.early_stop_count
-        # update: fix optimizer as dev code
         optim = Adam(lr=lr, params=filter(lambda x: x.requires_grad, self.sedst.parameters()), weight_decay=cfg.weight_decay)
         for epoch in range(cfg.epoch_num):
             if epoch <= self.base_epoch:
@@ -132,8 +132,11 @@ class Model:
             else:
                 early_stop_count -= 1
                 lr *= cfg.lr_decay
-                for group in optim.param_groups:
-                    group['lr'] *= cfg.lr_decay
+                #for group in optim.param_groups:
+                #    group['lr'] *= cfg.lr_decay
+                # as in dev code, seems this works better
+                optim = Adam(lr=lr, params=filter(lambda x: x.requires_grad, self.sedst.parameters()),
+                             weight_decay=cfg.weight_decay)
                 if not early_stop_count:
                     break
                 logging.info('early stop countdown %d, learning rate %f' % (early_stop_count, lr))
@@ -173,7 +176,7 @@ class Model:
                     u_input, u_input_np, z_input, m_input, m_input_np, p_input, p_input_np, u_len, \
                     m_len, p_len, degree_input, supervised \
                         = self._convert_batch(turn_batch)
-                    # suppose the validation set is labeled
+                    #if supervised:
                     loss, pr_loss, m_loss, q_loss, turn_states = self.sedst(u_input=u_input, z_input=z_input, m_input=m_input,
                                                               z_supervised=True, turn_states=turn_states,
                                                               p_input=p_input, p_input_np=p_input_np, p_len=p_len,
@@ -186,15 +189,22 @@ class Model:
                                                                                    m_loss.item(), q_loss.item()))
                     all_pr_loss += pr_loss.item()
                     all_q_loss += q_loss.item()
+                    # else:
+                    #     loss, m_loss, kl_div_loss, turn_states = self.sedst(u_input=u_input, z_input=None, m_input=m_input,
+                    #                                           z_supervised=False, turn_states=turn_states,u_input_np=u_input_np,m_input_np=m_input_np,
+                    #                                           p_input=p_input, p_input_np=p_input_np, p_len=p_len,
+                    #                                           u_len=u_len, m_len=m_len, mode='train', degree_input=degree_input)
+                    #     unsup_loss += loss.item()
+                    #     unsup_cnt += 1
+                    #     logging.debug('unsupervised loss:{:6f} m_loss:{:6f} kl_div_loss:{:6f}'.format(loss.item(), m_loss.item(),
+                    #                                                                kl_div_loss.item()))
 
             sup_loss /= (sup_cnt + 1e-8)
             unsup_loss /= (unsup_cnt + 1e-8)
-            if cfg.cancel_reg: 
-                # if posterior network can not instruct prior network, stop regularization. Default: False
-                if all_q_loss > all_pr_loss:
-                    self.sedst.alpha = 0.
-                else:
-                    self.sedst.alpha = cfg.alpha
+            if all_q_loss > all_pr_loss:
+               self.sedst.alpha = 0.
+            else:
+               self.sedst.alpha = cfg.alpha
         self.eval()
         self.sedst.train()
         return sup_loss, unsup_loss
